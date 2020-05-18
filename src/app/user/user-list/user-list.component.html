@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col">
+    <section>
+      <div class="row">
+        <div class="col-md-4">
+          <h1>LIST DES Utilisateurs</h1>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-2">
+          <button
+            class="button"
+            class="btn btn-primary"
+            (click)="redirectNewUserPage()"
+          >
+            Ajout Utilisateur
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="main">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pseudo</th>
+            <th>Adresse</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of utilisateurs">
+            <td>{{ u.id }}</td>
+            <td>{{ u.username }}</td>
+            <td>{{ u.address }}</td>
+            <td>{{ u.email }}</td>
+            <button type="button" class="btn btn-success">Editer</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="deleteUser(u)"
+            >
+              Supprimer
+            </button>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
