@@ -29,4 +29,9 @@ export class UserListComponent implements OnInit {
   deleteUser(user: User) {
     this.userService.deleteUser(user);
   }
+  editUser(user: User) {
+    if (user) {
+      this.router.navigate(['/user/edit', user.id]);
+    }
+  }
 }

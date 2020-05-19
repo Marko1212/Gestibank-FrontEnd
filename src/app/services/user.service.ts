@@ -37,4 +37,26 @@ export class UserService {
     }
     this.findAll();
   }
+
+  /**
+   * fonction de mise à jour d'un utilisateur
+   * @param user
+   */
+  updateUser(user: User): void {
+    var OldUser = this.findUserById(user.id);
+    let idx;
+    idx = USERS.indexOf(OldUser);
+    if (idx >= 0) {
+      USERS.splice(idx, 1, user);
+    }
+  }
+
+  findUserById(id: number): User {
+    var currentUser: User;
+    for (var i = 0; i < USERS.length; i++) {
+      currentUser = USERS[i];
+      if (currentUser.id == id) return currentUser;
+    }
+    return undefined;
+  }
 }

@@ -27,9 +27,13 @@
           class="btn btn-primary"
           [disabled]="!userForm.valid"
         >
-          Ajouter
+          Enregistrer
         </button>
-        <button type="button" class="btn btn-warning">
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="redirectUserPage()"
+        >
           Annuler
         </button>
       </form>
