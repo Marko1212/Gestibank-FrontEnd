@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Gestibank-FrontEnd": {
+    "gestiBankFront": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Gestibank-FrontEnd",
+            "outputPath": "dist/gestiBankFront",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Gestibank-FrontEnd:build"
+            "browserTarget": "gestiBankFront:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Gestibank-FrontEnd:build:production"
+              "browserTarget": "gestiBankFront:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Gestibank-FrontEnd:build"
+            "browserTarget": "gestiBankFront:build"
           }
         },
         "test": {
@@ -110,15 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Gestibank-FrontEnd:serve"
+            "devServerTarget": "gestiBankFront:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Gestibank-FrontEnd:serve:production"
+              "devServerTarget": "gestiBankFront:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Gestibank-FrontEnd"
+  "defaultProject": "gestiBankFront"
 }

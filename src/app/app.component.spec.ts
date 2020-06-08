@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Gestibank-FrontEnd'`, () => {
+  it(`should have as title 'gestiBankFront'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Gestibank-FrontEnd');
+    expect(app.title).toEqual('gestiBankFront');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Gestibank-FrontEnd app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('gestiBankFront app is running!');
   });
 });
