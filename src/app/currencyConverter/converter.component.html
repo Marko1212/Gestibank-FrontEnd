@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <h1>
+    <a href="convertisseurDevises" title="Convertisseur de devises">
+      <img
+        src="../../assets/img/currency-converter-logo.svg"
+        alt=""
+        width="36"
+        height="36"
+      />
+      <span>Convertisseur<br />de Devises</span>
+    </a>
+  </h1>
+  <main>
+    <simple-money
+      [baseCurrencies]="baseCurrencies"
+      [otherCurrencies]="currencies"
+      (updateExchangeRates)="onExchangeRateUpdate($event)"
+      (errorMessage)="responseErrorMessage = $event"
+    >
+    </simple-money>
+    <div class="output-container">
+      <simple-loading-spinner *ngIf="isLoading"></simple-loading-spinner>
+      <simple-currency-list
+        *ngIf="!isLoading"
+        [rates]="newRates"
+        [currencies]="currencies"
+        [responseErrorMessage]="responseErrorMessage"
+      >
+      </simple-currency-list>
+    </div>
+  </main>
+  <footer>
+    <p *ngIf="newRates">
+      Dernière mise à jour: {{ newRates.date | date: "dd/MM/yyyy" }}
+    </p>
+  </footer>
+</div>

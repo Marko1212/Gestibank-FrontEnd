@@ -1,0 +1,347 @@
+<div class="container">
+  <h1 class="text text-primary">
+    <i class="fa fa-user-plus"></i>
+  </h1>
+  <div *ngIf="message" [ngClass]="{ 'alert-success': message }">
+    <h1>{{ message }}</h1>
+  </div>
+  <form #myform="ngForm" (ngSubmit)="createConseiller(myform)">
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger':
+          lastname?.invalid && (lastname.dirty || lastname.touched),
+        'alert-success': lastname?.valid && (lastname.dirty || lastname.touched)
+      }"
+    >
+      <label for="lastname">Last name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="lastname"
+        [(ngModel)]="conseiller.lastname"
+        required
+        #lastname="ngModel"
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="lastname?.errors && (lastname.dirty || lastname.touched)"
+      >
+        <p *ngIf="lastname?.errors.required">Last name is required</p>
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger':
+          firstname?.invalid && (firstname.dirty || firstname.touched),
+        'alert-success':
+          firstname?.valid && (firstname.dirty || firstname.touched)
+      }"
+    >
+      <label for="firstname">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="firstname"
+        [(ngModel)]="conseiller.firstname"
+        required
+        #firstname="ngModel"
+      />
+
+      <div
+        class="form-control-feedback"
+        *ngIf="firstname?.errors && (firstname.dirty || firstname.touched)"
+      >
+        <p *ngIf="firstname?.errors.required">First name is required</p>
+      </div>
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger':
+          username?.invalid && (username.dirty || username.touched),
+        'alert-success': username?.valid && (username.dirty || username.touched)
+      }"
+    >
+      <label for="username">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        [(ngModel)]="conseiller.username"
+        required
+        #username="ngModel"
+      />
+
+      <div
+        class="form-control-feedback"
+        *ngIf="username?.errors && (username.dirty || username.touched)"
+      >
+        <p *ngIf="username?.errors.required">User name is required</p>
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger': email?.invalid && (email.dirty || email.touched),
+        'alert-success': email?.valid && (email.dirty || email.touched)
+      }"
+    >
+      <label for="email">Email</label>
+      <input
+        type="text"
+        class="form-control"
+        name="email"
+        [(ngModel)]="conseiller.email"
+        required
+        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        #email="ngModel"
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="email?.errors && (email.dirty || email.touched)"
+      >
+        <p *ngIf="email?.errors.required">Email is required</p>
+        <p *ngIf="email?.errors.pattern">
+          Email is not in a correct format! Please verify it!
+        </p>
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger':
+          homeNumber?.invalid && (homeNumber.dirty || homeNumber.touched),
+        'alert-success':
+          homeNumber?.valid && (homeNumber.dirty || homeNumber.touched)
+      }"
+    >
+      <label for="homeNumber">Home Number</label>
+      <input
+        type="text"
+        class="form-control"
+        name="homeNumber"
+        [(ngModel)]="conseiller.homeNumber"
+        required
+        #homeNumber="ngModel"
+      />
+
+      <div
+        class="form-control-feedback"
+        *ngIf="homeNumber?.errors && (homeNumber.dirty || homeNumber.touched)"
+      >
+        <p *ngIf="homeNumber?.errors.required">Home Number is required</p>
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger': street?.invalid && (street.dirty || street.touched),
+        'alert-success': street?.valid && (street.dirty || street.touched)
+      }"
+    >
+      <label for="street">Street</label>
+      <input
+        type="text"
+        class="form-control"
+        name="street"
+        [(ngModel)]="conseiller.street"
+        required
+        #street="ngModel"
+      />
+
+      <div
+        class="form-control-feedback"
+        *ngIf="street?.errors && (street.dirty || street.touched)"
+      >
+        <p *ngIf="street?.errors.required">Street is required</p>
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger': city?.invalid && (city.dirty || city.touched),
+        'alert-success': city?.valid && (city.dirty || city.touched)
+      }"
+    >
+      <label for="city">City</label>
+      <input
+        type="text"
+        class="form-control"
+        name="city"
+        [(ngModel)]="conseiller.city"
+        required
+        #city="ngModel"
+      />
+
+      <div
+        class="form-control-feedback"
+        *ngIf="city?.errors && (city.dirty || city.touched)"
+      >
+        <p *ngIf="city?.errors.required">City is required</p>
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger': zip?.invalid && (zip.dirty || zip.touched),
+        'alert-success': zip?.valid && (zip.dirty || zip.touched)
+      }"
+    >
+      <label for="zip">Zip</label>
+      <input
+        type="text"
+        class="form-control"
+        name="zip"
+        [(ngModel)]="conseiller.zip"
+        required
+        #zip="ngModel"
+      />
+
+      <div
+        class="form-control-feedback"
+        *ngIf="zip?.errors && (zip.dirty || zip.touched)"
+      >
+        <p *ngIf="zip?.errors.required">Zip is required</p>
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger': country?.invalid && (country.dirty || country.touched),
+        'alert-success': country?.valid && (country.dirty || country.touched)
+      }"
+    >
+      <label for="country">Country</label>
+      <input
+        type="text"
+        class="form-control"
+        name="country"
+        [(ngModel)]="conseiller.country"
+        required
+        #country="ngModel"
+      />
+
+      <div
+        class="form-control-feedback"
+        *ngIf="country?.errors && (country.dirty || country.touched)"
+      >
+        <p *ngIf="country?.errors.required">Country is required</p>
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger':
+          additionalInfoAddress?.invalid &&
+          (additionalInfoAddress.dirty || additionalInfoAddress.touched),
+        'alert-success':
+          additionalInfoAddress?.valid &&
+          (additionalInfoAddress.dirty || additionalInfoAddress.touched)
+      }"
+    >
+      <label for="additionalInfoAddress">Additional info address</label>
+      <input
+        type="text"
+        class="form-control"
+        name="additionalInfoAddress"
+        [(ngModel)]="conseiller.additionalInfoAddress"
+        required
+        #additionalInfoAddress="ngModel"
+      />
+
+      <div
+        class="form-control-feedback"
+        *ngIf="
+          additionalInfoAddress?.errors &&
+          (additionalInfoAddress.dirty || additionalInfoAddress.touched)
+        "
+      >
+        <p *ngIf="additionalInfoAddress?.errors.required">
+          Additional info about address is required
+        </p>
+      </div>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger': phone?.invalid && (phone.dirty || phone.touched),
+        'alert-success': phone?.valid && (phone.dirty || phone.touched)
+      }"
+    >
+      <label for="phone">Telephone</label>
+      <input
+        type="text"
+        class="form-control"
+        name="phone"
+        [(ngModel)]="conseiller.phone"
+        required
+        #phone="ngModel"
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="phone?.errors && (phone.dirty || phone.touched)"
+      >
+        <p *ngIf="phone?.errors.required">Phone is required</p>
+      </div>
+    </div>
+    <!-- <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger':
+          matricule.invalid && (matricule.dirty || matricule.touched),
+        'alert-success':
+          matricule.valid && (matricule.dirty || matricule.touched)
+      }"
+    >
+      <label for="matricule">Matricule</label>
+      <input
+        type="text"
+        class="form-control"
+        name="matricule"
+        [(ngModel)]="conseiller.matricule"
+        required
+        #matricule="ngModel"
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="matricule.errors && (matricule.dirty || matricule.touched)"
+      >
+        <p *ngIf="matricule.errors.required">Matricule is required</p>
+      </div>
+    </div> -->
+    <div
+      class="form-group"
+      [ngClass]="{
+        'alert-danger': pass?.invalid && (pass.dirty || pass.touched),
+        'alert-success': pass?.valid && (pass.dirty || pass.touched)
+      }"
+    >
+      <label for="pass">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="pass"
+        [(ngModel)]="conseiller.pass"
+        required
+        #pass="ngModel"
+      />
+      <div
+        class="form-control-feedback"
+        *ngIf="pass?.errors && (pass.dirty || pass.touched)"
+      >
+        <p *ngIf="pass?.errors.required">Password is required</p>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="!myform.form.valid"
+      class="btn btn-primary"
+    >
+      Save
+    </button>
+  </form>
+</div>

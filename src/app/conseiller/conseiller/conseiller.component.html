@@ -1,0 +1,71 @@
+<div class="container">
+  <div *ngIf="message" [ngClass]="{ 'alert-success': message }">
+    <h1>{{ message }}</h1>
+  </div>
+  <ng-container *ngIf="loadingRouteConfig"
+    >Loading route config...</ng-container
+  >
+  <form #myform="ngForm" (ngSubmit)="filterConseiller()">
+    <div id="searchForm">
+      <input
+        type="text"
+        class="form-control"
+        name="filter"
+        [(ngModel)]="filter"
+        #lastname="ngModel"
+      />
+      <button type="submit" class="btn btn-primary">
+        Filter
+      </button>
+    </div>
+  </form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Last name</th>
+        <th scope="col">First name</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Show</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let conseiller of listConseillers">
+        <td>
+          {{ conseiller.lastname }}
+        </td>
+        <td>
+          {{ conseiller.firstname }}
+        </td>
+        <td>{{ conseiller.username }}</td>
+        <td>
+          {{ conseiller.email }}
+        </td>
+        <td>
+          <a
+            class="alert alert-success"
+            [routerLink]="['/admin/conseiller/view', conseiller.idUserAccount]"
+            ><i class="fa fa-eye"></i>
+          </a>
+        </td>
+        <td>
+          <a
+            class="alert alert-primary"
+            [routerLink]="['/admin/conseiller/edit', conseiller.idUserAccount]"
+            ><i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a
+            class="alert alert-danger"
+            style="cursor: pointer;"
+            (click)="delete(conseiller)"
+            ><i class="fa fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

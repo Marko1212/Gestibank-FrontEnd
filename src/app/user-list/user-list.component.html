@@ -1,0 +1,12 @@
+<div class="container">
+
+    <h1 class="text text-secondary"><a (click)="child2Shown=!child2Shown"><i class="fa fa-arrow-down text text-secondary" *ngIf="child2Shown"></i><i class="fa fa-arrow-up text text-success" *ngIf="!child2Shown"></i></a> Users </h1>
+
+    <div *ngIf="message" class="alert alert-success fixed-outside " role="alert">
+        {{message}}
+    </div>
+    <app-user [hidden]="child2Shown" *ngFor="let user of userList" [user]='user' (editUser)="mostra($event)" (message)="msg($event)">
+    </app-user>
+</div>
+
+<router-outlet></router-outlet>

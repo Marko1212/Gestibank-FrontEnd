@@ -1,0 +1,51 @@
+<h1>Bienvenue</h1>
+
+<h4>ici vous pouvez effectue des operation de payment</h4>
+<div class="container">
+    <h1 class="text text-primary">
+        <i class="fa fa-money "></i> </h1>
+    <div *ngIf="message">
+        {{message}}
+    </div>
+    <form #myform="ngForm" (ngSubmit)="createPayment(myform)">
+        <input type="hidden" class="form-control" name="transactionType" required value="Debit">
+        <div class="form-group" [ngClass]="{'alert-danger': montant.invalid && (montant.dirty || montant.touched) ,'alert-success': montant.valid && (montant.dirty || montant.touched)}">
+            <label for="nom">Montant</label>
+            <input type="number" class="form-control" name="montant" [(ngModel)]="operation.montant" required #montant="ngModel">
+            <div class="form-control-feedback" *ngIf="montant.errors && (montant.dirty || montant.touched)">
+                <p *ngIf="montant.errors.required">Nom is required</p>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'alert-danger': typeMvt.invalid && (typeMvt.dirty || typeMvt.touched) ,'alert-success': typeMvt.valid && (typeMvt.dirty || typeMvt.touched)}">
+            <label for="typeMvt">Transaction Type</label>
+            <select name="typeMvt" [(ngModel)]="operation.typeMvt" name="typeMvt" id="typeMvt" required #typeMvt="ngModel">
+          <option value="VIREMENT">Virement</option>
+          <option value="POS">Pos</option>
+          <option value="BANCOMAT">BANCOMAT</option>
+       </select>
+            <div class="form-control-feedback" *ngIf="typeMvt.errors && (typeMvt.dirty || typeMvt.touched)">
+                <p *ngIf="typeMvt.errors.required">Transaction type is required</p>
+            </div>
+        </div>
+        <div *ngIf="typeMvt.value ==='VIREMENT'" class="form-group" style="width:50%">
+            <label class="label label-info" for="Mileage">Iban destinataire:</label>
+            <input class="form-control" type="text" name="iban" id="iban" />
+        </div>
+        <div class="form-group" [ngClass]="{'alert-danger': dateMvt.invalid && (dateMvt.dirty || dateMvt.touched) ,'alert-success': dateMvt.valid && (dateMvt.dirty || dateMvt.touched)}">
+            <label for="dateMvt">Date Mvt</label>
+            <input type="date" class="form-control" name="dateMvt" [(ngModel)]="operation.dateMvt" required #dateMvt="ngModel">
+            <div class="form-control-feedback" *ngIf="dateMvt.errors && (dateMvt.dirty || dateMvt.touched)">
+                <p *ngIf="dateMvt.errors.required">dateMvt is required</p>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'alert-danger': libelle.invalid && (libelle.dirty || libelle.touched) ,'alert-success': libelle.valid && (libelle.dirty || libelle.touched)}">
+            <label for="libelle">Libelle</label>
+            <input type="text" class="form-control" name="libelle" [(ngModel)]="operation.libelle" required #libelle="ngModel">
+            <div class="form-control-feedback" *ngIf="libelle.errors && (libelle.dirty || libelle.touched)">
+                <p *ngIf="libelle.errors.required">Revenu Mensuel is required</p>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!myform.form.valid" class="btn btn-primary">Effectuer</button>
+    </form>
+</div>

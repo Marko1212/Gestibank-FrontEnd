@@ -1,0 +1,31 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">User Name</th>
+            <th scope="col">Adress</th>
+            <th scope="col">Email</th>
+            <th scope="col">Show</th>
+            <th scope="col">Edit </th>
+            <th scope="col">Delete </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                {{user.username}}
+            </td>
+            <td>
+                {{user.adress}}
+            </td>
+            <td>
+                {{user.email}}
+            </td>
+            <td><a class="alert alert-success" [routerLink]="['/user/', user.id,'view' ]"><i class="fa fa-eye"></i> </a> </td>
+            <td><a class="alert alert-primary" (click)="edit()" [routerLink]="['/user/', user.id,'edit']"><i class="fa fa-edit"></i> </a> </td>
+            <td><a class="alert alert-danger" style="cursor: pointer;" (click)="delete(user.id)"><i class="fa fa-trash"></i> </a> </td>
+
+        </tr>
+    </tbody>
+</table>

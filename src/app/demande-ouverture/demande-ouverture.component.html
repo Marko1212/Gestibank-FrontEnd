@@ -1,0 +1,61 @@
+<div class="container">
+  <h2>Bienvenue</h2>
+  <div *ngIf="message">
+    {{ message }}
+  </div>
+  <form #myform="ngForm" (ngSubmit)="affectation(myform)">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id du client potentiel</th>
+          <th scope="col">Email</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Agent</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let demande of listDemandeOuverture">
+        <tr>
+          <td>{{ demande.idUserAccount }}</td>
+          <td>{{ demande.email }}</td>
+          <td>{{ demande.firstname }}</td>
+          <td>{{ demande.lastname }}</td>
+          <td>{{ demande.phone }}</td>
+          <td>{{ demande.agent }}</td>
+          <td>
+            <input
+              type="checkbox"
+              [(ngModel)]="demande.checked"
+              name="demande"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h4>Agents</h4>
+    <div>
+      <select
+        class="form-control"
+        [(ngModel)]="conseiller"
+        (change)="onChange($event.target.value)"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option
+          *ngFor="let conseiller of listConseillers"
+          [value]="conseiller.idUserAccount"
+          >{{ conseiller.lastname }} {{ conseiller.firstname }}</option
+        >
+      </select>
+    </div>
+    <br />
+    <!-- <input type="hidden" [(ngModel)]="conseiller?.id">
+        <input type="hidden" [(ngModel)]="demande?.id"> -->
+    <div>
+      <button type="submit" class="btn btn-primary">Affectation</button>
+    </div>
+  </form>
+</div>

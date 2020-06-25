@@ -1,0 +1,8 @@
+.card {
+    flex-direction: row;
+}
+
+.card-img-top {
+    width: 18%;
+    height: 27%;
+}

@@ -1,0 +1,35 @@
+<div class="container">
+    <div *ngIf="message" [ngClass]="{'alert-success':message}">
+        <h1>{{message}}</h1>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Adress</th>
+                <th scope="col">Email</th>
+                <th scope="col">Show</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {{conseiller.nom}}
+                </td>
+                <td>
+                    {{conseiller.prenome}}
+                </td>
+                <td> {{conseiller.adresse}}
+                </td>
+                <td>
+                    {{conseiller.email}}
+                </td>
+                <td><a class="alert alert-success" [routerLink]="['/client/conseiller',conseiller.id, 'view' ]"><i class="fa fa-eye"></i> </a> </td>
+
+
+            </tr>
+        </tbody>
+    </table>
+</div>

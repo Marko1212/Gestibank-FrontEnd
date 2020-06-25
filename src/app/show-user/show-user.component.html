@@ -1,0 +1,17 @@
+<div class="container" style="text-align: center">
+    <div class="card">
+        <img src="../../assets//img/person1.png" width="50%!important" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">User: {{user.username | uppercase}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Username: {{user.username}}</li>
+            <li class="list-group-item">Email: {{user.email}}</li>
+            <li class="list-group-item">Adress: {{user.adress}}</li>
+        </ul>
+
+    </div>
+    <!--<app-compte></app-compte>-->
+</div>
+<router-outlet></router-outlet>

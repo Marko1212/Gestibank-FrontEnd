@@ -1,0 +1,49 @@
+<div class="container" style="text-align: center;">
+  <div class="card">
+    <!--  <img
+      src="../../../assets/img/star.png"
+      width="30%!important"
+      class="card-img-top"
+      alt="..."
+    /> -->
+    <div class="card-body">
+      <h5 class="card-title">
+        Conseiller: {{ conseiller?.firstname | uppercase }}
+        {{ conseiller?.lastname | uppercase }}
+      </h5>
+      <p class="card-text">Fiche d'information</p>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Id : {{ conseiller?.idUserAccount }}</li>
+        <li class="list-group-item">Nom : {{ conseiller?.lastname }}</li>
+        <li class="list-group-item">Prénom : {{ conseiller?.firstname }}</li>
+        <!-- <li class="list-group-item">Matricule : {{conseiller?.matricule}}</li> -->
+        <li class="list-group-item">Username : {{ conseiller?.username }}</li>
+        <li class="list-group-item">Email : {{ conseiller?.email }}</li>
+        <li class="list-group-item">
+          Home Number : {{ conseiller?.homeNumber }}
+        </li>
+        <li class="list-group-item">Street : {{ conseiller?.street }}</li>
+        <li class="list-group-item">City : {{ conseiller?.city }}</li>
+        <li class="list-group-item">Code Postal : {{ conseiller?.zip }}</li>
+        <li class="list-group-item">Pays : {{ conseiller?.country }}</li>
+        <li class="list-group-item">
+          Additional info address : {{ conseiller?.additionalInfoAddress }}
+        </li>
+        <li class="list-group-item">Téléphone : {{ conseiller?.phone }}</li>
+        <li class="list-group-item">Password : {{ conseiller?.pass }}</li>
+        <li class="list-group-item">
+          <a [routerLink]="['/admin/conseillers']"
+            >Retour à la liste des Agents
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Liste de clients :<br/>
+      <div *ngFor="let client of conseiller.listeClients">{{client}}<br/></div><br/>
+      Liste de demandes client :<br/>
+      <div *ngFor="let demande of conseiller.listeDemandeClient">{{demande}}<br/></div><br/>
+      Liste de demandes d'ouverture à valider :<br/>
+      <div *ngFor="let demandeOuverture of conseiller.listeDemandeOuvertureAValider">{{demandeOuverture}}<br/> -->
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<h1 class="text text-secondary"><a (click)="child3Shown=!child3Shown"><i class="fa fa-arrow-down text text-secondary" *ngIf="child3Shown"></i><i class="fa fa-arrow-up text text-success" *ngIf="!child3Shown"></i></a> Edit </h1>
+<div class="container" [hidden]="child3Shown">
+    <h1 class="text text-primary"><i class="fa fa-edit "></i> User</h1>
+    <form #myform="ngForm" (ngSubmit)="update()">
+        <div class="form-group">
+            <label for="id">Id</label>
+            <input type="text" class="form-control" disabled name="id" [(ngModel)]="user.id">
+        </div>
+        <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
+        </div>
+        <div class="form-group">
+            <label for="adress">Adress</label>
+            <input type="text" class="form-control" name="adress" [(ngModel)]="user.adress">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="user.email">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+
+    </form>
+</div>

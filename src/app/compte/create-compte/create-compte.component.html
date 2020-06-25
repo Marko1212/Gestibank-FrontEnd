@@ -1,0 +1,52 @@
+<h1>Bienvenue</h1>
+
+<h4>ici vous pouvez creer Votre demande pour l'ouverture d'un compte</h4>
+<div class="container">
+    <h1 class="text text-primary">
+        <i class="fa fa-user-plus "></i> </h1>
+    <div *ngIf="message">
+        {{message}}
+    </div>
+    <form #myform="ngForm" (ngSubmit)="createCompte(myform)">
+        <div class="form-group">
+            <label for="id">Id</label>
+            <input type="text" class="form-control" disabled name="id" [(ngModel)]="createCompte.id">
+        </div>
+        <div class="form-group" [ngClass]="{'alert-danger': nom.invalid && (nom.dirty || nom.touched) ,'alert-success': nom.valid && (nom.dirty || nom.touched)}">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" name="nom" [(ngModel)]="createCompte.nom" required #nom="ngModel">
+            <div class="form-control-feedback" *ngIf="nom.errors && (nom.dirty || nom.touched)">
+                <p *ngIf="nom.errors.required">Nom is required</p>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'alert-danger': prenom.invalid && (prenom.dirty || prenom.touched) ,'alert-success': prenom.valid && (prenom.dirty || prenom.touched)}">
+            <label for="nom">Prenom</label>
+            <input type="text" class="form-control" name="prenom" [(ngModel)]="createCompte.nom" required #prenom="ngModel">
+            <div class="form-control-feedback" *ngIf="prenom.errors && (prenom.dirty || prenom.touched)">
+                <p *ngIf="prenom.errors.required">Prenom is required</p>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'alert-danger': email.invalid && (email.dirty || email.touched) ,'alert-success': email.valid && (email.dirty || email.touched)}">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="createCompte.email" required #email="ngModel">
+            <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+                <p *ngIf="email.errors.required">Email is required</p>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'alert-danger': revenuMens.invalid && (revenuMens.dirty || revenuMens.touched) ,'alert-success': revenuMens.valid && (revenuMens.dirty || revenuMens.touched)}">
+            <label for="revenuMens">Revenu Mensuel</label>
+            <input type="number" class="form-control" name="revenuMens" [(ngModel)]="createCompte.revenuMens" required #revenuMens="ngModel">
+            <div class="form-control-feedback" *ngIf="revenuMens.errors && (revenuMens.dirty || revenuMens.touched)">
+                <p *ngIf="revenuMens.errors.required">Revenu Mensuel is required</p>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'alert-danger': piecesJustif.invalid && (piecesJustif.dirty || piecesJustif.touched) ,'alert-success': piecesJustif.valid && (piecesJustif.dirty || piecesJustif.touched)}">
+            <label for="piecesJustif">Pièces Justificatives</label>
+            <input type="file" class="form-control" name="piecesJustif" [(ngModel)]="createCompte.piecesJustif" required #piecesJustif="ngModel">
+            <div class="form-control-feedback" *ngIf="piecesJustif.errors && (piecesJustif.dirty || piecesJustif.touched)">
+                <p *ngIf="piecesJustif.errors.required">Pièces Justificatives is required</p>
+            </div>
+        </div>
+        <button type="submit" [disabled]="!myform.form.valid" class="btn btn-primary">Valider</button>
+    </form>
+</div>

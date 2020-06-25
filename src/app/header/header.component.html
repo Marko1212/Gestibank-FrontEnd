@@ -1,0 +1,159 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink=""
+    ><i class="fa fa-university"></i> GestiBank
+  </a>
+  <div class="form-inline">
+    <ul class="navbar-nav">
+      <!-- Invité -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink=""
+          >Home<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/creerCompte"
+          >Créer Compte<span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/convertisseurDevises"
+          >Convertisseur de devises <span class="sr-only"></span
+        ></a>
+      </li>
+      <!-- Client -->
+      <li class="nav-item" *ngIf="login.getRole() == 'client'">
+        <a class="nav-link" style="cursor: pointer;" routerLink="/client"
+          >Bienvenue {{ login.getUsername() }}</a
+        >
+      </li>
+      <li class="nav-item dropdown" *ngIf="login.getRole() == 'client'">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Votre Conseiller
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a
+            class="dropdown-item"
+            [routerLink]="['client', login.getIdUserAccount(), 'conseiller']"
+            >{{ conseiller?.lastname }}</a
+          >
+        </div>
+      </li>
+      <!--       <li class="nav-item" *ngIf="login.getRole() == 'client'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          [routerLink]="['client', login.getUsername(), 'conseiller']"
+          ></a
+        >
+      </li> -->
+
+      <li class="nav-item" *ngIf="login.getRole() == 'client'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          [routerLink]="['client', login.getIdUserAccount(), 'compte']"
+          >Vos Comptes</a
+        >
+      </li>
+      <!-- Conseiller -->
+      <li class="nav-item" *ngIf="login.getRole() == 'agent'">
+        <a class="nav-link" style="cursor: pointer;" routerLink="/conseiller"
+          >Bienvenue {{ login.getUsername() }}</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="login.getRole() == 'agent'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          routerLink="/conseiller/demandesOuvertures"
+          >Demandes d'ouvertures</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="login.getRole() == 'agent'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          routerLink="/conseiller/clients"
+          >Clients</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="login.getRole() == 'agent'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          routerLink="/conseiller/requetes"
+          >Requetes</a
+        >
+      </li>
+      <!-- Administrateur-->
+      <li class="nav-item" *ngIf="login.getRole() == 'admin'">
+        <a class="nav-link" style="cursor: pointer;" routerLink="/admin"
+          >Bienvenue {{ login.getUsername() }}</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="login.getRole() == 'admin'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          routerLink="/admin/conseillers"
+          >Agents</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="login.getRole() == 'admin'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          routerLink="/admin/demandesOuvertures"
+          >Demandes d'ouvertures</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="login.getRole() == 'admin'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          routerLink="/admin/create/conseiller"
+          >Create Agent</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <!-- Authentifié -->
+      <li class="nav-item" *ngIf="login.getRole() !== 'user'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          (click)="logout()"
+          href="/login"
+          >Logout</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="login.getRole() === 'user'">
+        <a class="nav-link" style="cursor: pointer;" routerLink="/login"
+          >Login</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>

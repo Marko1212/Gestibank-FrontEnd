@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>Bienvenue {{user?.username}}</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Type Compte</th>
+                <th scope="col">RIB</th>
+                <th scope="col">Decouverte</th>
+                <th scope="col">Montant Agios</th>
+                <th scope="col">Seuil Remuneration</th>
+                <th scope="col">Solde</th>
+                <th scope="col">Transaction</th>
+                <th scope="col">Operation</th>
+
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let compte of comptes">
+            <tr>
+                <td> {{compte.typeCompte}} </td>
+                <td>{{compte.rib}}</td>
+                <td>{{compte.decouvert}}</td>
+                <td>{{compte.montantAgios}}</td>
+                <td>{{compte.seuilRemuneration}}</td>
+                <td>{{compte.solde}}</td>
+                <td><a class="alert alert-success" [routerLink]="['/client/compte/', compte.numeroCompte,'transaction' ]"><i class="fa fa-eye"></i> </a></td>
+                <td><a class="alert alert-success" [routerLink]="['/client/compte/', compte.numeroCompte,'operation' ]"><i class="fa fa-money"></i></a></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2 *ngIf="solde<0" class="alert-danger">Ton solde est de : {{solde | currency:'EUR'}}</h2>
+    <h2 *ngIf="solde>0" class="alert-success">Ton solde est de : {{solde | currency:'EUR'}}</h2>
+</div>

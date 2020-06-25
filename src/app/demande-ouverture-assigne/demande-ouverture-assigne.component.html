@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>Bienvenue</h2>
+  <div *ngIf="message">
+    {{ message }}
+  </div>
+  <form #myform="ngForm" (ngSubmit)="accept(myform)">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Prenom</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Email</th>
+          <th scope="col">Revenu Mensuel</th>
+          <th scope="col">Valider</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let client of listClientPotentiel">
+        <tr>
+          <td>{{ client.nom }}</td>
+          <td>{{ client.prenom }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.revenuMens }}</td>
+          <td>
+            <input
+              type="checkbox"
+              value="{{ client.id }}"
+              [(ngModel)]="client.valide"
+              [name]="client.id"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+
+    <div>
+      <button type="submit" class="btn btn-primary">Valide</button>
+    </div>
+  </form>
+</div>
