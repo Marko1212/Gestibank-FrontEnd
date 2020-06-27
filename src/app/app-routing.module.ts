@@ -57,7 +57,7 @@ const routes: Routes = [
     canActivate: [AuthConseiller],
   },
   { path: "creerCompte", component: CreateDemandeOuvertureComponent },
-  //{ path: "creerCompte/:id/uploadFiles", component: UploadFilesComponent },
+  { path: "creerCompte/:id/uploadFiles", component: UploadFilesComponent },
   {
     path: "conseiller",
     component: ConseillerHomeComponent,
