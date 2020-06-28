@@ -30,7 +30,7 @@ export class DemandesOuverturesService {
 
   getDemandeOuvertureConseiller(id) {
     return this.httpDemandeOuverture.get(
-      this.apiUrl + "conseiller/" + id + "/demandeOuverture"
+      this.apiUrl + "agent/getUnresolvedRequests/" + id
     );
   }
 

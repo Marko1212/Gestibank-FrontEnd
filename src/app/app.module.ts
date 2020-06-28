@@ -41,7 +41,6 @@ import { CreateClientComponent } from "./client/create-client/create-client.comp
 import { EditClientComponent } from "./client/edit-client/edit-client.component";
 import { ViewClientComponent } from "./client/view-client/view-client.component";
 import { ConverterModule } from "./currencyConverter/converter.module";
-import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 //import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 @NgModule({
@@ -65,7 +64,7 @@ import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.co
     AdminComponent,
     ConseillerComponent,
     CreateDemandeOuvertureComponent,
-    UploadFilesComponent,
+    //UploadFilesComponent,
     CreateConseillerComponent,
     CreateClientComponent,
     ViewConseillerComponent,

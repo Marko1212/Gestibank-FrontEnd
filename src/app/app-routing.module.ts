@@ -31,7 +31,7 @@ import { ListClientComponent } from "./client/list-client/list-client.component"
 import { ConseillerClientComponent } from "./conseiller/conseiller-client/conseiller-client.component";
 import { ViewClientComponent } from "./client/view-client/view-client.component";
 import { EditClientComponent } from "./client/edit-client/edit-client.component";
-import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
+//import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -57,7 +57,7 @@ const routes: Routes = [
     canActivate: [AuthConseiller],
   },
   { path: "creerCompte", component: CreateDemandeOuvertureComponent },
-  { path: "creerCompte/:id/uploadFiles", component: UploadFilesComponent },
+  //{ path: "creerCompte/:id/uploadFiles", component: UploadFilesComponent },
   {
     path: "conseiller",
     component: ConseillerHomeComponent,

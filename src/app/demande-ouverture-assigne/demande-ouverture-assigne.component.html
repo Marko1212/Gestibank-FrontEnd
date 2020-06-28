@@ -7,26 +7,25 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">Prenom</th>
+          <th scope="col">Prénom</th>
           <th scope="col">Nom</th>
           <th scope="col">Email</th>
-          <th scope="col">Revenu Mensuel</th>
-          <th scope="col">Valider</th>
+          <th scope="col">ID</th>
+          <th scope="col">Residence</th>
+          <th scope="col">Salary</th>
+          <th scope="col">Valide</th>
         </tr>
       </thead>
       <tbody *ngFor="let client of listClientPotentiel">
         <tr>
-          <td>{{ client.nom }}</td>
-          <td>{{ client.prenom }}</td>
+          <td>{{ client.firstname }}</td>
+          <td>{{ client.lastname }}</td>
           <td>{{ client.email }}</td>
-          <td>{{ client.revenuMens }}</td>
+          <td><a href="{{ client.files[0]?.url }}">ID</a></td>
+          <td><a href="{{ client.files[1]?.url }}">Residence</a></td>
+          <td><a href="{{ client.files[2]?.url }}">Salary</a></td>
           <td>
-            <input
-              type="checkbox"
-              value="{{ client.id }}"
-              [(ngModel)]="client.valide"
-              [name]="client.id"
-            />
+            <input type="checkbox" [(ngModel)]="client.valid" name="client" />
           </td>
         </tr>
       </tbody>
@@ -35,7 +34,7 @@
     <br />
 
     <div>
-      <button type="submit" class="btn btn-primary">Valide</button>
+      <button type="submit" class="btn btn-primary">Valider</button>
     </div>
   </form>
 </div>
