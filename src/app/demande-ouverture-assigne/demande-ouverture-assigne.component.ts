@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DemandesOuverturesService } from "../demande-ouverture/demandes-ouvertures.service";
 import { Client } from "../client/create-client/client";
-import { CLIENT_RENEG_LIMIT } from "tls";
+//import { CLIENT_RENEG_LIMIT } from "tls";
 
 @Component({
   selector: "app-demande-ouverture-assigne",
