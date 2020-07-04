@@ -34,9 +34,17 @@ export class DemandesOuverturesService {
     );
   }
 
-  assigne(id) {
-    return this.httpDemandeOuverture.get(
-      this.apiUrl + "conseiller/demandeOuverture/" + id + "/validation"
+  assigne(list) {
+    const httpHedears = new HttpHeaders();
+    httpHedears.append("Content-Type", "application/json");
+    httpHedears.append("Accept", "*/*");
+    httpHedears.append("Accept-Encoding", "gzip, deflate");
+    httpHedears.append("Connection", "keep-alive");
+
+    return this.httpDemandeOuverture.post(
+      this.apiUrl + "conseiller/demandeOuverture/validation",
+      { validated: list },
+      { headers: httpHedears, responseType: "text" }
     );
   }
 }

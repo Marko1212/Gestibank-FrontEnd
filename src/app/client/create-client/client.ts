@@ -1,21 +1,14 @@
-import { Conseiller } from '../../conseiller/create-conseiller/conseiller';
+import { Conseiller } from "../../conseiller/create-conseiller/conseiller";
 
 export class Client {
-    id: number;
-    nom: string;
-    prenom: string;
-    email: string;
-    adresse: string;
-    telephone: string;
-    pseudo: string;
-    mdp: string;
-    identifiant: number;
-    revenuMens: number;
-    piecesJustif: boolean;
-    conseiller: Conseiller;
-    valide: boolean;
-    constructor() {
-
-    }
-
+  idClient: number;
+  idRequest: number;
+  valid: boolean;
+  idAgent: number;
+  constructor(idClient, idRequest, valid, idAgent) {
+    (this.idClient = idClient),
+      (this.idRequest = idRequest),
+      (this.valid = valid),
+      (this.idAgent = idAgent);
+  }
 }

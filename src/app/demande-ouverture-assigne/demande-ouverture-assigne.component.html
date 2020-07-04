@@ -10,7 +10,8 @@
           <th scope="col">Prénom</th>
           <th scope="col">Nom</th>
           <th scope="col">Email</th>
-          <th scope="col">ID</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Identity document</th>
           <th scope="col">Residence</th>
           <th scope="col">Salary</th>
           <th scope="col">Valide</th>
@@ -21,7 +22,8 @@
           <td>{{ client.firstname }}</td>
           <td>{{ client.lastname }}</td>
           <td>{{ client.email }}</td>
-          <td><a href="{{ client.files[0]?.url }}">ID</a></td>
+          <td>{{ client.phone }}</td>
+          <td><a href="{{ client.files[0]?.url }}">Identity document</a></td>
           <td><a href="{{ client.files[1]?.url }}">Residence</a></td>
           <td><a href="{{ client.files[2]?.url }}">Salary</a></td>
           <td>
