@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DemandesOuverturesService } from "../demande-ouverture/demandes-ouvertures.service";
 import { Client } from "../client/create-client/client";
+import { Router } from "@angular/router";
 //import { CLIENT_RENEG_LIMIT } from "tls";
 
 @Component({
@@ -13,7 +14,10 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
   client: Client;
   listOfValidatedClients: Client[] = [];
   // listclientAccepte: any[] = [];
-  constructor(private demandeService: DemandesOuverturesService) {}
+  constructor(
+    private demandeService: DemandesOuverturesService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     const conseillerId = localStorage.getItem("idUserAccount");
@@ -24,6 +28,11 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
         this.listClientPotentiel = result;
         console.log(result);
       });
+  }
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = "reload";
+    this.router.navigate(["/conseiller/demandesOuvertures"]);
   }
   accept(form) {
     console.log(this.listClientPotentiel);
@@ -44,7 +53,8 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
       .assigne(this.listOfValidatedClients)
       .subscribe((result) => {
         console.log(result);
-        form.reset();
+        this.reloadComponent();
+        //form.reset();
       });
   }
 }

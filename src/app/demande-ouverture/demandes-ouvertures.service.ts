@@ -42,7 +42,7 @@ export class DemandesOuverturesService {
     httpHedears.append("Connection", "keep-alive");
 
     return this.httpDemandeOuverture.post(
-      this.apiUrl + "conseiller/demandeOuverture/validation",
+      this.apiUrl + "agent/validation",
       { validated: list },
       { headers: httpHedears, responseType: "text" }
     );
