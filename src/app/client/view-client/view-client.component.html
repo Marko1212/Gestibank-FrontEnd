@@ -1,22 +1,45 @@
-<div class="container" style="text-align: center">
-    <div class="card">
-        <img src="../../assets//img/person1.png" width="30%!important" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Clien: {{client?.prenome | uppercase}} {{client?.nom | uppercase}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Id : {{client?.id}}</li>
-            <li class="list-group-item">Nom : {{client?.nom}}</li>
-            <li class="list-group-item">Prénom : {{client?.prenome}}</li>
-            <li class="list-group-item">Matricule : {{client?.matricule}}</li>
-            <li class="list-group-item">Email : {{client?.email}}</li>
-            <li class="list-group-item">Adresse : {{client?.adress}}</li>
-            <li class="list-group-item">Téléphone : {{client?.telephone}}</li>
-            <li class="list-group-item">Pseudo : {{client?.pseudo}}</li>
-            <li class="list-group-item">Prénom : {{client?.prenome}}</li>
-            <li class="list-group-item">Prénom : {{client?.prenome}}</li>
-        </ul>
-
+<div class="container" style="text-align: center;">
+  <div class="card">
+    <!-- <img
+      src="../../assets//img/person1.png"
+      width="30%!important"
+      class="card-img-top"
+      alt="..."
+    /> -->
+    <div class="card-body">
+      <h5 class="card-title">
+        Client : {{ client?.userAccountFullName | uppercase }}
+      </h5>
+      <p class="card-text">
+        Fiche d'information du compte :
+      </p>
     </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Bank Account ID : {{ client?.idBankAccount }}
+      </li>
+      <li class="list-group-item">
+        Bank Account Number : {{ client?.bankAccountNumber }}
+      </li>
+      <li class="list-group-item">
+        Bank Account Type ID : {{ client?.bankAccountTypeId }}
+      </li>
+      <li class="list-group-item">
+        Bank Account Type Name : {{ client?.bankAccountTypeName }}
+      </li>
+      <li class="list-group-item">Client ID : {{ client?.userAccountId }}</li>
+      <li class="list-group-item">Bank Rule ID : {{ client?.bankRuleId }}</li>
+      <li class="list-group-item">
+        Bank Rule Percent : {{ client?.bankRulePercent }}
+      </li>
+      <li class="list-group-item">
+        Bank Rule Name : {{ client?.bankRuleName }}
+      </li>
+      <li class="list-group-item">
+        <a [routerLink]="['/conseiller/clients']"
+          >Retour à la liste des Clients
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
