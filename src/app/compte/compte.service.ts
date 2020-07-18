@@ -10,6 +10,8 @@ export class CompteService {
   constructor(private httpCompte: HttpClient) {}
 
   getComptesByIdClient(id) {
-    return this.httpCompte.get(this.apiUrl + "client/" + id + "/compte");
+    return this.httpCompte.get(
+      this.apiUrl + "bankAccount/getBankAccounts/" + id
+    );
   }
 }

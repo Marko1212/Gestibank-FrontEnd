@@ -106,7 +106,7 @@ const routes: Routes = [
     canActivate: [AuthClient],
   },
   {
-    path: "client/:id/compte",
+    path: "client/:id/comptes",
     component: CompteComponent,
     canActivate: [AuthClient],
   },
