@@ -1,41 +1,50 @@
 <div class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Prenom</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Adress</th>
-                <th scope="col">Email</th>
-                <th scope="col">RIB</th>
-                <th scope="col">Show</th>
-                <th scope="col">Edit </th>
-                <th scope="col">Delete </th>
-
-
-            </tr>
-        </thead>
-        <tbody *ngFor="let compte of compteList, let i=index">
-            <tr>
-                <td>
-                    {{compte[i].client.prenome}}
-                </td>
-                <td>
-                    {{compte[i].client.nom}}
-                </td>
-                <td>
-                    {{compte[i].client.adress}}
-                </td>
-                <td>
-                    {{compte[i].client.email}}
-                </td>
-                <td>
-                    {{compte[i].rib}}
-                </td>
-                <!-- <td><a class="alert alert-success" [routerLink]="['/conseiller/client/',compte[i].client.id,'view' ]"><i class="fa fa-eye"></i> </a> </td>
-                <td><a class="alert alert-primary" (click)="edit()" [routerLink]="['/conseiller/client/',compte[i].client.id,'edit']"><i class="fa fa-edit"></i> </a> </td>
-                <td><a class="alert alert-danger" style="cursor: pointer;" (click)="delete(client.id)"><i class="fa fa-trash"></i> </a> </td>
--->
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Client Full Name</th>
+        <th scope="col">Account type</th>
+        <th scope="col">Account number</th>
+        <th scope="col">Show</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let compte of clientList">
+      <tr>
+        <td>
+          {{ compte.userAccountFullName }}
+        </td>
+        <td>
+          {{ compte.bankAccountTypeName }}
+        </td>
+        <td>
+          {{ compte.bankAccountNumber }}
+        </td>
+        <td>
+          <a
+            class="alert alert-success"
+            [routerLink]="['/conseiller/client/', 'view', compte.idBankAccount]"
+            ><i class="fa fa-eye"></i>
+          </a>
+        </td>
+        <td>
+          <a
+            class="alert alert-primary"
+            (click)="edit()"
+            [routerLink]="['/conseiller/client/', 'edit', compte.idBankAccount]"
+            ><i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a
+            class="alert alert-danger"
+            style="cursor: pointer;"
+            (click)="delete()"
+            ><i class="fa fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

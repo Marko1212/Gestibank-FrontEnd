@@ -13,8 +13,10 @@ export class ClientService {
     return this.httpClient.get(this.apiUrl + "client/" + id + "/conseiller");
   }
 
-  getListClient() {
-    return this.httpClient.get(this.apiUrl + "conseiller/client");
+  getListClient(id) {
+    return this.httpClient.get(
+      this.apiUrl + "bankAccount/getBankAccounts/" + id
+    );
   }
   getClientById(id) {
     return this.httpClient.get(this.apiUrl + "afficherClient/" + id);

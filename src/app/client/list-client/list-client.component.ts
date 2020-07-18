@@ -10,24 +10,25 @@ import { Client } from "../create-client/client";
 })
 export class ListClientComponent implements OnInit {
   clientList: any;
-  compteList: any[] = [];
-  client: Client;
+  //compteList: any[] = [];
+  //client: Client;
   constructor(
-    private clientService: ClientService,
-    private compteService: CompteService
+    private clientService: ClientService //private compteService: CompteService
   ) {
     //this.client = new Client();
   }
   ngOnInit() {
-    this.clientService.getListClient().subscribe((list) => {
-      console.log("list ", list);
-      this.clientList = list;
-      for (this.client of this.clientList) {
+    this.clientService
+      .getListClient(localStorage.getItem("idUserAccount"))
+      .subscribe((list) => {
+        console.log("list ", list);
+        this.clientList = list;
+        /*       for (this.client of this.clientList) {
         this.compteService
           .getComptesByIdClient(this.client.idClient)
           .subscribe((response) => this.compteList.push(response));
       }
-      console.log(this.compteList);
-    });
+      console.log(this.compteList); */
+      });
   }
 }

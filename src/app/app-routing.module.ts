@@ -42,7 +42,7 @@ const routes: Routes = [
     canActivate: [AuthConseiller],
   },
   {
-    path: "conseiller/client/:id/edit",
+    path: "conseiller/client/edit/:id",
     component: EditClientComponent,
     canActivate: [AuthConseiller],
   },
