@@ -1,6 +1,6 @@
 <div class="container">
   <div *ngIf="message" [ngClass]="{ 'alert-success': message }">
-    <h1>{{ message }}</h1>
+    <h3>{{ message }}</h3>
   </div>
   <table class="table table-striped">
     <thead>
@@ -34,7 +34,6 @@
         <td>
           <a
             class="alert alert-primary"
-            (click)="edit()"
             [routerLink]="['/conseiller/client/', 'edit', compte.idBankAccount]"
             ><i class="fa fa-edit"></i>
           </a>

@@ -27,7 +27,10 @@ export class ClientService {
 
   deactivateBankAccount(id, userID) {
     return this.httpClient.delete(
-      this.apiUrl + "bankAccount/deactivateBankAccount/" + id + "/" + userID
+      this.apiUrl + "bankAccount/deactivateBankAccount/" + id + "/" + userID,
+      {
+        responseType: "text",
+      }
     );
   }
 }
