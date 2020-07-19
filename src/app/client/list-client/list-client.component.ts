@@ -10,6 +10,7 @@ import { Client } from "../create-client/client";
 })
 export class ListClientComponent implements OnInit {
   clientList: any;
+  message: string;
   //compteList: any[] = [];
   //client: Client;
   constructor(
@@ -29,6 +30,23 @@ export class ListClientComponent implements OnInit {
           .subscribe((response) => this.compteList.push(response));
       }
       console.log(this.compteList); */
+      });
+  }
+
+  deactivate(compte) {
+    let userID = localStorage.getItem("idUserAccount");
+    this.clientService
+      .deactivateBankAccount(compte.idBankAccount, userID)
+      .subscribe((response) => {
+        console.log(response);
+        this.message = "Le compte a bien été désactivé!";
+        window.setTimeout(() => {
+          this.message = null;
+        }, 3000);
+        let index = this.clientList.indexOf(compte, 0);
+        if (index > -1) {
+          this.clientList.splice(index, 1);
+        }
       });
   }
 }

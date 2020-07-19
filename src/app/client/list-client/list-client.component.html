@@ -1,4 +1,7 @@
 <div class="container">
+  <div *ngIf="message" [ngClass]="{ 'alert-success': message }">
+    <h1>{{ message }}</h1>
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -7,7 +10,7 @@
         <th scope="col">Account number</th>
         <th scope="col">Show</th>
         <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
+        <th scope="col">Deactivate</th>
       </tr>
     </thead>
     <tbody *ngFor="let compte of clientList">
@@ -40,7 +43,7 @@
           <a
             class="alert alert-danger"
             style="cursor: pointer;"
-            (click)="delete()"
+            (click)="deactivate(compte)"
             ><i class="fa fa-trash"></i>
           </a>
         </td>
