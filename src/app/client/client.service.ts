@@ -19,9 +19,9 @@ export class ClientService {
     );
   }
 
-  getClientById(id) {
+  getClientById(id, userID) {
     return this.httpClient.get(
-      this.apiUrl + "bankAccount/getBankAccount/" + id
+      this.apiUrl + "bankAccount/getBankAccount/" + id + "/" + userID
     );
   }
 }
