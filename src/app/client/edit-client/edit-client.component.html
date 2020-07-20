@@ -1,3 +1,44 @@
-<p>
-  edit-client works!
-</p>
+<div class="container">
+  <h2>Bienvenue</h2>
+  <div *ngIf="message">
+    {{ message }}
+  </div>
+  <hr />
+  <form #myform="ngForm" (ngSubmit)="updateAccount(myform)">
+    <h4>Bank Account Types</h4>
+    <div>
+      <select
+        class="form-control"
+        [(ngModel)]="compteType"
+        (change)="onChangeType($event.target.value)"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option
+          *ngFor="let compteType of listCompteTypes"
+          [value]="compteType.idBankAccountType"
+          >{{ compteType.name }}</option
+        >
+      </select>
+    </div>
+    <hr />
+    <h4>Bank Rules</h4>
+    <div>
+      <select
+        class="form-control"
+        [(ngModel)]="bankRule"
+        (change)="onChangeRule($event.target.value)"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option
+          *ngFor="let bankRule of bankRules"
+          [value]="bankRule.idBankRules"
+          >{{ bankRule.ruleName }} ({{ bankRule.percent }} %)</option
+        >
+      </select>
+    </div>
+    <br />
+    <div>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>

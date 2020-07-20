@@ -17,7 +17,6 @@ export class EditConseillerComponent implements OnInit {
   message: string;
 
   constructor(
-    // private formBuilder: FormBuilder,
     private conseillerService: ConseillerService,
     private route: ActivatedRoute,
     private router: Router
@@ -29,51 +28,7 @@ export class EditConseillerComponent implements OnInit {
       .getConseillerById(this.route.snapshot.params.id)
       .subscribe((response) => (this.conseiller = response));
     console.log(this.conseiller + "######");
-    // this.form = this.formBuilder.group({
-    //   firstname: ["", Validators.required],
-    //   lastname: ["", Validators.required],
-    // });
-
-    // console.log(this.route.snapshot.params.id);
-    // this.conseiller = this.conseillerService
-    //   .getConseillerById(this.route.snapshot.params.id)
-    //   .pipe(tap((conseiller) => this.form.patchValue(conseiller)));
-    // console.log(this.form.value);
-
-    // console.log(conseiller);
   }
-
-  /*   conseiller: any;
-  constructor(
-    private conseillerService: ConseillerService,
-    private route: ActivatedRoute
-  ) {
-    this.conseiller = new Conseiller(
-      null,
-      "",
-      "",
-      "",
-      "",
-      "",
-      // null,
-      "",
-      null,
-      "",
-      "",
-      "",
-      "",
-      "",
-      null,
-      null
-    );
-  }
-
-  ngOnInit() {
-    console.log(this.route.snapshot.params.id);
-    this.conseillerService
-      .getConseillerById(this.route.snapshot.params.id)
-      .subscribe((result) => (this.conseiller = result));
-  } */
 
   updateConseiller(form) {
     console.log(this.conseiller);
