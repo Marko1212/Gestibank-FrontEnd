@@ -39,16 +39,16 @@ export class EditClientComponent implements OnInit {
   }
 
   onChangeRule(value) {
-    this.bankRuleID = value;
+    this.bankRuleID = parseInt(value);
   }
 
   onChangeType(value) {
-    this.bankAccountTypeID = value;
+    this.bankAccountTypeID = parseInt(value);
   }
 
   updateAccount(form) {
     let agentID = localStorage.getItem("idUserAccount");
-    let bankAccountID = this.route.snapshot.params.id;
+    let bankAccountID = parseInt(this.route.snapshot.params.id);
     console.log(agentID);
     console.log(bankAccountID);
     let updatedAccount = {
