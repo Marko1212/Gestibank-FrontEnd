@@ -29,12 +29,14 @@ export class EditClientComponent implements OnInit {
 
     this.compteService.getBankAccountTypes().subscribe((response) => {
       this.listCompteTypes = response;
-      console.log(JSON.stringify(this.listCompteTypes) + "########");
+      console.log(this.listCompteTypes);
+      console.log("############");
     });
 
     this.compteService.getBankRules().subscribe((response) => {
       this.bankRules = response;
-      console.log(JSON.stringify(this.bankRules) + "##########");
+      console.log(this.bankRules);
+      console.log("############");
     });
   }
 

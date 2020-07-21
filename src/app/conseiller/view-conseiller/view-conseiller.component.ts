@@ -18,7 +18,10 @@ export class ViewConseillerComponent implements OnInit {
     console.log(this.route.snapshot.params.id);
     this.conseillerService
       .getConseillerById(this.route.snapshot.params.id)
-      .subscribe((response) => (this.conseiller = response));
-    console.log(this.conseiller + "######");
+      .subscribe((response) => {
+        this.conseiller = response;
+        console.log(this.conseiller);
+        console.log("######");
+      });
   }
 }
