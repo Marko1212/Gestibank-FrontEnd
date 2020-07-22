@@ -13,28 +13,24 @@
         <!-- <th scope="col">Show</th> -->
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let agent of conseiller">
       <tr>
-        <td *ngIf="conseiller">
-          {{ conseiller[0]?.lastname }}
+        <td>
+          {{ agent?.lastname }}
         </td>
-        <td *ngIf="conseiller">
-          {{ conseiller[0]?.firstname }}
+        <td>
+          {{ agent?.firstname }}
         </td>
-        <td *ngIf="conseiller">
-          {{ conseiller[0]?.phone }}
+        <td>
+          {{ agent?.phone }}
         </td>
-        <td *ngIf="conseiller">
-          {{ conseiller[0]?.email }}
+        <td>
+          {{ agent?.email }}
         </td>
-        <!-- <td *ngIf="conseiller">
+        <!-- <td>
           <a
             class="alert alert-success"
-            [routerLink]="[
-              '/client/conseiller',
-              conseiller[0]?.idUserAccount,
-              'view'
-            ]"
+            [routerLink]="['/client/conseiller', agent?.idUserAccount, 'view']"
             ><i class="fa fa-eye"></i>
           </a>
         </td> -->
