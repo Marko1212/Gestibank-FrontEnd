@@ -117,7 +117,7 @@ const routes: Routes = [
   },
 
   {
-    path: "client/conseiller/view/:id",
+    path: "client/conseiller/:id/view",
     component: ViewClientComponent,
     canActivate: [AuthClient],
   },

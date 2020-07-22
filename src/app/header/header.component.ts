@@ -12,15 +12,23 @@ import { Conseiller } from "../conseiller/create-conseiller/conseiller";
   styleUrls: ["./header.component.css"],
 })
 export class HeaderComponent implements OnInit {
-  //conseiller: any;
+  conseiller: any;
   //user: any;
   constructor(
-    // private clientService: ClientService,
+    private clientService: ClientService,
     private auth: AuthServiceService,
     private login: LoginService
   ) {}
   ngOnInit() {
     console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    /*     if (this.login.getRole() === "client") {
+      this.clientService
+        .getConseiller(this.login.getIdUserAccount())
+        .subscribe((result) => {
+          this.conseiller = result;
+          console.log(result);
+        });
+      } */
     /* if (localStorage.user) {
       this.user = JSON.parse(localStorage.user);
       console.log("I am in header ngoninit!");
@@ -38,6 +46,7 @@ export class HeaderComponent implements OnInit {
     localStorage.setItem("user", '{"roleName": "user"}');
     console.log(localStorage.user); */
   }
+
   logout() {
     this.auth.logout();
   }

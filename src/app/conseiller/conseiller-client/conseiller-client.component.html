@@ -10,28 +10,34 @@
         <th scope="col">Prenom</th>
         <th scope="col">Phone</th>
         <th scope="col">Email</th>
-        <th scope="col">Show</th>
+        <!-- <th scope="col">Show</th> -->
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>
-          {{ conseiller.nom }}
+        <td *ngIf="conseiller">
+          {{ conseiller[0]?.lastname }}
         </td>
-        <td>
-          {{ conseiller.prenome }}
+        <td *ngIf="conseiller">
+          {{ conseiller[0]?.firstname }}
         </td>
-        <td>{{ conseiller.adresse }}</td>
-        <td>
-          {{ conseiller.email }}
+        <td *ngIf="conseiller">
+          {{ conseiller[0]?.phone }}
         </td>
-        <td>
+        <td *ngIf="conseiller">
+          {{ conseiller[0]?.email }}
+        </td>
+        <!-- <td *ngIf="conseiller">
           <a
             class="alert alert-success"
-            [routerLink]="['/client/conseiller', conseiller.id, 'view']"
+            [routerLink]="[
+              '/client/conseiller',
+              conseiller[0]?.idUserAccount,
+              'view'
+            ]"
             ><i class="fa fa-eye"></i>
           </a>
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>
