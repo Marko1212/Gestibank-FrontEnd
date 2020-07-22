@@ -7,13 +7,13 @@ import { ClientService } from "../../client/client.service";
   styleUrls: ["./conseiller-client.component.css"],
 })
 export class ConseillerClientComponent implements OnInit {
-  conseiller: any;
+  agent: any;
   constructor(private clientService: ClientService) {}
 
   ngOnInit() {
     const idClient = localStorage.getItem("idUserAccount");
     this.clientService.getConseiller(idClient).subscribe((result) => {
-      this.conseiller = result;
+      this.agent = result;
       console.log(result);
     });
   }

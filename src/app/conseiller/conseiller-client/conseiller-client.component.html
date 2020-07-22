@@ -13,28 +13,28 @@
         <!-- <th scope="col">Show</th> -->
       </tr>
     </thead>
-    <tbody *ngFor="let agent of conseiller">
-      <tr>
-        <td>
-          {{ agent?.lastname }}
-        </td>
-        <td>
-          {{ agent?.firstname }}
-        </td>
-        <td>
-          {{ agent?.phone }}
-        </td>
-        <td>
-          {{ agent?.email }}
-        </td>
-        <!-- <td>
+    <!-- <tbody *ngFor="let agent of conseiller"> -->
+    <tr>
+      <td>
+        {{ agent?.lastname }}
+      </td>
+      <td>
+        {{ agent?.firstname }}
+      </td>
+      <td>
+        {{ agent?.phone }}
+      </td>
+      <td>
+        {{ agent?.email }}
+      </td>
+      <!-- <td>
           <a
             class="alert alert-success"
             [routerLink]="['/client/conseiller', agent?.idUserAccount, 'view']"
             ><i class="fa fa-eye"></i>
           </a>
         </td> -->
-      </tr>
-    </tbody>
+    </tr>
+    <!-- </tbody> -->
   </table>
 </div>
