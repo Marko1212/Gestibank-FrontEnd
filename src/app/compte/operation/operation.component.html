@@ -8,7 +8,7 @@
   <div *ngIf="message">
     {{ message }}
   </div>
-  <form #myform="ngForm" (ngSubmit)="createPayment(myform)">
+  <form #myform="ngForm" (ngSubmit)="makeTransaction(myform)">
     <!--     <input
       type="hidden"
       class="form-control"
@@ -28,7 +28,7 @@
         type="number"
         class="form-control"
         name="montant"
-        [(ngModel)]="operation.montant"
+        [(ngModel)]="operation.amount"
         required
         id="montant"
         #montant="ngModel"
@@ -90,7 +90,11 @@
       </div>
     </div>
 
-    <div *ngIf="idTransactionType === 3" class="form-group" style="width: 50%;">
+    <div
+      *ngIf="operation.transactionTypeId === 3"
+      class="form-group"
+      style="width: 50%;"
+    >
       <div
         class="form-group"
         [ngClass]="{
@@ -118,7 +122,7 @@
         </div>
       </div>
     </div>
-    <div
+    <!--     <div
       class="form-group"
       [ngClass]="{
         'alert-danger': dateMvt.invalid && (dateMvt.dirty || dateMvt.touched),
@@ -142,7 +146,7 @@
           La date de la transaction is required
         </p>
       </div>
-    </div>
+    </div> -->
     <div
       class="form-group"
       [ngClass]="{
@@ -155,7 +159,7 @@
         type="text"
         class="form-control"
         name="libelle"
-        [(ngModel)]="operation.libelle"
+        [(ngModel)]="operation.description"
         required
         #libelle="ngModel"
       />

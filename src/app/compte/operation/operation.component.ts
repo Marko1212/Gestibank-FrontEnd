@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { OperationService } from "./operation.service";
 import { Operation } from "./operation";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-operation",
@@ -13,20 +13,13 @@ export class OperationComponent implements OnInit {
   transactionTypes: any;
   idTransactionType: number;
   id: number;
+  message: string;
   constructor(
     private operationService: OperationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
-    this.operation = new Operation(
-      "",
-      null,
-      new Date(),
-      null,
-      "",
-      null,
-      "",
-      null
-    );
+    this.operation = new Operation(null, null, null, null, "", null, "");
   }
 
   ngOnInit() {
@@ -39,14 +32,27 @@ export class OperationComponent implements OnInit {
     });
   }
 
-  createPayment() {
+  makeTransaction(form) {
+    if (this.operation.transactionTypeId === 1) {
+      this.operation.bankAccountToId = parseInt(this.route.snapshot.params.id);
+    }
     this.operationService
-      .sendOperation(this.operation, this.id)
-      .subscribe((result) => console.log(result));
+      .makeTransaction(this.operation)
+      .subscribe((result) => {
+        console.log(result);
+        this.message = "La transaction a bien été effectuée!";
+        window.setTimeout(() => {
+          let idUserAccount = localStorage.getItem("idUserAccount");
+          this.message = "";
+          form.reset();
+          let link = ["client/" + idUserAccount + "/comptes"];
+          this.router.navigate(link);
+        }, 3000);
+      });
   }
 
   onChangeTransactionType(value) {
-    this.idTransactionType = parseInt(value);
-    console.log(this.idTransactionType);
+    this.operation.transactionTypeId = parseInt(value);
+    console.log(this.operation.transactionTypeId);
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Operation } from "./operation";
 
@@ -11,12 +11,20 @@ export class OperationService {
   apiUrl = "http://localhost:8080/";
   constructor(private httOperation: HttpClient) {}
 
-  sendOperation(operationS, id) {
+  makeTransaction(operationS) {
+    console.log(operationS);
+    const httpHedears = new HttpHeaders();
+    httpHedears.append("Content-Type", "application/json");
+    httpHedears.append("Accept", "*/*");
+    httpHedears.append("Accept-Encoding", "gzip, deflate");
+    httpHedears.append("Connection", "keep-alive");
     return this.httOperation.post(
-      this.apiUrl + "client/compte/" + id + "/transaction/debit",
-      operationS
+      this.apiUrl + "transaction/makeTransaction",
+      operationS,
+      { headers: httpHedears, responseType: "text" }
     );
   }
+
   setOperation(operationS) {
     this.operation = operationS;
   }

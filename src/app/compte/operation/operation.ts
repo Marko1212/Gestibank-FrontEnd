@@ -1,5 +1,5 @@
 export class Operation {
-  constructor(
+  /*  constructor(
     public transactionType: string,
     public numero_transaction: number,
     public date_creation: Date,
@@ -8,5 +8,15 @@ export class Operation {
     public dateMvt: Date,
     public libelle: string,
     public ibanTo: number
+  ) {} */
+
+  constructor(
+    public loggedInUserId: number,
+    public bankAccountFromId: number,
+    public bankAccountToId: number,
+    public transactionTypeId: number,
+    public description: string,
+    public amount: number,
+    public ibanTo: string
   ) {}
 }
