@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class OperationComponent implements OnInit {
   operation: Operation;
   transactionTypes: any;
-  idTransactionType: number;
+  //idTransactionType: number;
   id: number;
   message: string;
   constructor(
