@@ -7,6 +7,6 @@ export class Operation {
     public typeMvt: string,
     public dateMvt: Date,
     public libelle: string,
-    public iban: number
+    public ibanTo: number
   ) {}
 }

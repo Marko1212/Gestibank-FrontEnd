@@ -20,4 +20,10 @@ export class OperationService {
   setOperation(operationS) {
     this.operation = operationS;
   }
+
+  getTransactionTypes() {
+    return this.httOperation.get(
+      this.apiUrl + "transaction/getTransactionTypes"
+    );
+  }
 }

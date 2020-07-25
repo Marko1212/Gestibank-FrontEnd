@@ -10,6 +10,8 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class OperationComponent implements OnInit {
   operation: Operation;
+  transactionTypes: any;
+  idTransactionType: number;
   id: number;
   constructor(
     private operationService: OperationService,
@@ -30,10 +32,21 @@ export class OperationComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     console.log(this.id);
+    this.operationService.getTransactionTypes().subscribe((response) => {
+      this.transactionTypes = response;
+      console.log(this.transactionTypes);
+      console.log("#############");
+    });
   }
+
   createPayment() {
     this.operationService
       .sendOperation(this.operation, this.id)
       .subscribe((result) => console.log(result));
+  }
+
+  onChangeTransactionType(value) {
+    this.idTransactionType = parseInt(value);
+    console.log(this.idTransactionType);
   }
 }

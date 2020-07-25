@@ -9,93 +9,112 @@
     {{ message }}
   </div>
   <form #myform="ngForm" (ngSubmit)="createPayment(myform)">
-    <input
+    <!--     <input
       type="hidden"
       class="form-control"
       name="transactionType"
       required
       value="Debit"
-    />
+    /> -->
     <div
       class="form-group"
       [ngClass]="{
-        'alert-danger': montant.invalid && (montant.dirty || montant.touched),
-        'alert-success': montant.valid && (montant.dirty || montant.touched)
+        'alert-danger': montant?.invalid && (montant.dirty || montant.touched),
+        'alert-success': montant?.valid && (montant.dirty || montant.touched)
       }"
     >
-      <label for="nom">Montant</label>
+      <label for="montant">Montant</label>
       <input
         type="number"
         class="form-control"
         name="montant"
         [(ngModel)]="operation.montant"
         required
+        id="montant"
         #montant="ngModel"
       />
       <div
         class="form-control-feedback"
-        *ngIf="montant.errors && (montant.dirty || montant.touched)"
+        *ngIf="montant?.errors && (montant.dirty || montant.touched)"
       >
-        <p *ngIf="montant.errors.required">Montant is required</p>
+        <p *ngIf="montant?.errors.required">Montant is required</p>
       </div>
     </div>
     <div
       class="form-group"
       [ngClass]="{
-        'alert-danger': typeMvt.invalid && (typeMvt.dirty || typeMvt.touched),
-        'alert-success': typeMvt.valid && (typeMvt.dirty || typeMvt.touched)
+        'alert-danger':
+          transaction?.invalid && (transaction?.dirty || transaction?.touched),
+        'alert-success':
+          transaction?.valid && (transaction.dirty || transaction.touched)
       }"
     >
-      <label for="typeMvt">Transaction Type</label>
-      <select
-        name="typeMvt"
-        [(ngModel)]="operation.typeMvt"
-        name="typeMvt"
-        id="typeMvt"
-        required
-        #typeMvt="ngModel"
-      >
-        <option value="VIREMENT">Virement</option>
-        <option value="POS">Pos</option>
-        <option value="BANCOMAT">BANCOMAT</option>
-      </select>
+      <label for="transactionType">Transaction Type</label>
+      <div>
+        <!-- <select
+          name="typeMvt"
+          [(ngModel)]="operation.typeMvt"
+          name="typeMvt"
+          id="typeMvt"
+          required
+          #typeMvt="ngModel"
+        >
+          <option value="CREDIT">Credit</option>
+          <option value="BANKOMAT">Bankomat</option>
+          <option value="TRANSFER">Transfer</option>
+        </select> -->
+        <select
+          class="form-control"
+          [(ngModel)]="transactionType"
+          name="transactionType"
+          (change)="onChangeTransactionType($event.target.value)"
+          required
+          #transaction="ngModel"
+        >
+          <option
+            *ngFor="let transactionType of transactionTypes"
+            [value]="transactionType.idTransactionType"
+            >{{ transactionType?.name }}</option
+          >
+        </select>
+      </div>
       <div
         class="form-control-feedback"
-        *ngIf="typeMvt.errors && (typeMvt.dirty || typeMvt.touched)"
+        *ngIf="
+          transaction?.errors && (transaction.dirty || transaction.touched)
+        "
       >
-        <p *ngIf="typeMvt.errors.required">Transaction type is required</p>
+        <p *ngIf="transaction?.errors.required">
+          Transaction type is required
+        </p>
       </div>
     </div>
 
-    <div
-      *ngIf="typeMvt.value === 'VIREMENT'"
-      class="form-group"
-      style="width: 50%;"
-    >
+    <div *ngIf="idTransactionType === 3" class="form-group" style="width: 50%;">
       <div
         class="form-group"
         [ngClass]="{
-          'alert-danger': iban.invalid && (iban.dirty || iban.touched),
-          'alert-success': iban.valid && (iban.dirty || iban.touched)
+          'alert-danger': ibanTo.invalid && (ibanTo.dirty || ibanTo.touched),
+          'alert-success': ibanTo.valid && (ibanTo.dirty || ibanTo.touched)
         }"
       >
-        <label class="label label-info" for="Mileage"
-          >Iban du destinataire :</label
+        <label class="label label-info" for="ibanTo"
+          >Iban du destinataire</label
         >
         <input
           class="form-control"
-          [(ngModel)]="operation.iban"
+          [(ngModel)]="operation.ibanTo"
           type="text"
-          name="iban"
-          id="iban"
-          #iban="ngModel"
+          name="ibanTo"
+          id="ibanTo"
+          #ibanTo="ngModel"
           required
         />
         <div
           class="form-control-feedback"
-          *ngIf="iban.errors && (iban.dirty || iban.touched)"
+          *ngIf="ibanTo.errors && (ibanTo.dirty || ibanTo.touched)"
         >
-          <p *ngIf="iban.errors.required">IBAN is required</p>
+          <p *ngIf="ibanTo.errors.required">IBAN is required</p>
         </div>
       </div>
     </div>
@@ -106,7 +125,7 @@
         'alert-success': dateMvt.valid && (dateMvt.dirty || dateMvt.touched)
       }"
     >
-      <label for="dateMvt">Date Mvt</label>
+      <label for="dateMvt">Date de la transaction</label>
       <input
         type="date"
         class="form-control"
@@ -119,7 +138,9 @@
         class="form-control-feedback"
         *ngIf="dateMvt.errors && (dateMvt.dirty || dateMvt.touched)"
       >
-        <p *ngIf="dateMvt.errors.required">dateMvt is required</p>
+        <p *ngIf="dateMvt.errors.required">
+          La date de la transaction is required
+        </p>
       </div>
     </div>
     <div
