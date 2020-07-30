@@ -12,16 +12,21 @@
     </thead>
     <tbody *ngFor="let transaction of listTransaction">
       <tr>
-        <td>{{ transaction.numeroTransaction }}</td>
-        <td>{{ transaction.dateMvt | date: "longDate" }}</td>
-        <td *ngIf="transaction.type == 'Credit'">
-          + {{ transaction.montant | currency: "EUR" }}
+        <td>{{ transaction?.idTransaction }}</td>
+        <td>{{ transaction?.time | date: "longDate" }}</td>
+        <td *ngIf="transaction.transactionTypeName == 'Credit'">
+          + {{ transaction?.amount | currency: "EUR" }}
         </td>
-        <td *ngIf="transaction.type == 'Debit'">
-          - {{ transaction.montant | currency: "EUR" }}
+        <td
+          *ngIf="
+            transaction.transactionTypeName == 'Bankomat' ||
+            transaction.transactionTypeName == 'Transfer'
+          "
+        >
+          - {{ transaction?.amount | currency: "EUR" }}
         </td>
-        <td>{{ transaction.libelle }}</td>
-        <td>{{ transaction.typeMvt }}</td>
+        <td>{{ transaction?.description }}</td>
+        <td>{{ transaction?.transactionTypeName }}</td>
       </tr>
     </tbody>
   </table>
