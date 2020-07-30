@@ -36,6 +36,22 @@ export class OperationComponent implements OnInit {
     if (this.operation.transactionTypeId === 1) {
       this.operation.bankAccountToId = parseInt(this.route.snapshot.params.id);
     }
+    if (this.operation.transactionTypeId === 2) {
+      this.operation.bankAccountFromId = parseInt(
+        this.route.snapshot.params.id
+      );
+      this.operation.loggedInUserId = parseInt(
+        localStorage.getItem("idUserAccount")
+      );
+    }
+    if (this.operation.transactionTypeId === 3) {
+      this.operation.bankAccountFromId = parseInt(
+        this.route.snapshot.params.id
+      );
+      this.operation.loggedInUserId = parseInt(
+        localStorage.getItem("idUserAccount")
+      );
+    }
     this.operationService
       .makeTransaction(this.operation)
       .subscribe((result) => {

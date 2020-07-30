@@ -17,6 +17,6 @@ export class Operation {
     public transactionTypeId: number,
     public description: string,
     public amount: number,
-    public ibanTo: string
+    public bankAccountNumberTo: string
   ) {}
 }

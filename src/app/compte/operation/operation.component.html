@@ -98,27 +98,36 @@
       <div
         class="form-group"
         [ngClass]="{
-          'alert-danger': ibanTo.invalid && (ibanTo.dirty || ibanTo.touched),
-          'alert-success': ibanTo.valid && (ibanTo.dirty || ibanTo.touched)
+          'alert-danger':
+            bankAccountNumberTo.invalid &&
+            (bankAccountNumberTo.dirty || bankAccountNumberTo.touched),
+          'alert-success':
+            bankAccountNumberTo.valid &&
+            (bankAccountNumberTo.dirty || bankAccountNumberTo.touched)
         }"
       >
-        <label class="label label-info" for="ibanTo"
-          >Iban du destinataire</label
+        <label class="label label-info" for="bankAccountNumberTo"
+          >Numéro du compte du destinataire</label
         >
         <input
           class="form-control"
-          [(ngModel)]="operation.ibanTo"
+          [(ngModel)]="operation.bankAccountNumberTo"
           type="text"
-          name="ibanTo"
-          id="ibanTo"
-          #ibanTo="ngModel"
+          name="bankAccountNumberTo"
+          id="bankAccountNumberTo"
+          #bankAccountNumberTo="ngModel"
           required
         />
         <div
           class="form-control-feedback"
-          *ngIf="ibanTo.errors && (ibanTo.dirty || ibanTo.touched)"
+          *ngIf="
+            bankAccountNumberTo.errors &&
+            (bankAccountNumberTo.dirty || bankAccountNumberTo.touched)
+          "
         >
-          <p *ngIf="ibanTo.errors.required">IBAN is required</p>
+          <p *ngIf="bankAccountNumberTo.errors.required">
+            Receiver's bank account number is required
+          </p>
         </div>
       </div>
     </div>
