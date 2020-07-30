@@ -15,9 +15,7 @@ export class MouvementService {
 
   getTransactionByIdCompte(id) {
     //console.log("id" +id);
-    return this.httpTransaction.get(
-      this.apiUrl + "client/compte/" + id + "/transaction"
-    );
+    return this.httpTransaction.get(this.apiUrl + "getTransactions/" + id);
   }
   setTransactionByIdCompte(transaction) {
     this.transaction = transaction;
