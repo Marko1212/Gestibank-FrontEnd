@@ -11,6 +11,7 @@ import { LoginService } from "./../../login/login.service";
 })
 export class MouvementComponent implements OnInit {
   listTransaction: any;
+  bankAccountId: number;
 
   constructor(
     private login: LoginService,
@@ -20,12 +21,14 @@ export class MouvementComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.params.id;
-    console.log(id);
-    this.transactionService.getTransactionByIdCompte(id).subscribe((compt) => {
-      this.listTransaction = JSON.parse(JSON.stringify(compt));
-      console.log(this.listTransaction);
-      this.transactionService.setTransactionByIdCompte(this.listTransaction);
-    });
+    this.bankAccountId = parseInt(this.route.snapshot.params.id);
+    console.log(this.bankAccountId);
+    this.transactionService
+      .getTransactionByIdCompte(this.bankAccountId)
+      .subscribe((compt) => {
+        this.listTransaction = JSON.parse(JSON.stringify(compt));
+        console.log(this.listTransaction);
+        this.transactionService.setTransactionByIdCompte(this.listTransaction);
+      });
   }
 }

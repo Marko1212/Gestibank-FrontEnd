@@ -13,10 +13,9 @@ export class MouvementService {
     private compte: CompteService
   ) {}
 
-  getTransactionByIdCompte(id) {
-    //console.log("id" +id);
+  getTransactionByIdCompte(bankAccountId) {
     return this.httpTransaction.get(
-      this.apiUrl + "transaction/getTransactions/" + id
+      this.apiUrl + "transaction/getTransactions/" + bankAccountId
     );
   }
   setTransactionByIdCompte(transaction) {
