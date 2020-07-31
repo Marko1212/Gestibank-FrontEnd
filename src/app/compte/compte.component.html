@@ -3,20 +3,22 @@
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Type Compte</th>
+        <th scope="col">Bank Account Type</th>
+        <th scope="col">Bank Rule</th>
         <th scope="col">Bank Account Number</th>
         <!-- <th scope="col">Decouvert</th>
         <th scope="col">Montant Agios</th>
         <th scope="col">Seuil Remuneration</th>
         <th scope="col">Solde</th> -->
-        <th scope="col">Transactions et solde</th>
+        <th scope="col">Transactions and Account Balance</th>
         <th scope="col">Operations</th>
       </tr>
     </thead>
     <tbody *ngFor="let compte of comptes">
       <tr>
-        <td>{{ compte.bankAccountTypeName }}</td>
-        <td>{{ compte.bankAccountNumber }}</td>
+        <td>{{ compte?.bankAccountTypeName }}</td>
+        <td>{{ compte?.bankRuleName }}</td>
+        <td>{{ compte?.bankAccountNumber }}</td>
         <!-- <td>{{ compte.decouvert }}</td>
         <td>{{ compte.montantAgios }}</td>
         <td>{{ compte.seuilRemuneration }}</td>
