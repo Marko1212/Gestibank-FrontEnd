@@ -14,32 +14,78 @@
       <tr>
         <td>{{ transaction?.idTransaction }}</td>
         <td>{{ transaction?.time | date: "longDate" }}</td>
-        <td *ngIf="transaction.transactionTypeName == 'Credit'">
+        <td
+          *ngIf="
+            transaction?.bankAccountToId === bankAccountId &&
+            transaction?.bankAccountFromId !== bankAccountId
+          "
+        >
           + {{ transaction?.amount | currency: "EUR" }}
         </td>
         <td
           *ngIf="
-            transaction.transactionTypeName == 'Bankomat' ||
-            transaction.transactionTypeName == 'Transfer'
+            transaction?.bankAccountToId === bankAccountId &&
+            transaction?.bankAccountFromId === bankAccountId
+          "
+        >
+          + {{ transaction?.amount - transaction?.amount | currency: "EUR" }}
+        </td>
+        <td
+          *ngIf="
+            transaction?.bankAccountFromId === bankAccountId &&
+            transaction?.bankAccountToId !== bankAccountId
           "
         >
           - {{ transaction?.amount | currency: "EUR" }}
         </td>
         <td>{{ transaction?.description }}</td>
-        <td>{{ transaction?.transactionTypeName }}</td>
+        <td
+          *ngIf="
+            transaction?.bankAccountFromId === 0 ||
+            transaction?.bankAccountToId === 0
+          "
+        >
+          {{ transaction?.transactionTypeName }}
+        </td>
+        <td
+          *ngIf="
+            transaction?.bankAccountFromId === bankAccountId &&
+            transaction?.bankAccountToId === bankAccountId
+          "
+        >
+          {{ transaction?.transactionTypeName }} from account to itself
+        </td>
+        <td
+          *ngIf="
+            transaction?.bankAccountFromId === bankAccountId &&
+            transaction?.bankAccountToId !== bankAccountId &&
+            transaction?.bankAccountToId !== 0
+          "
+        >
+          {{ transaction?.transactionTypeName }} sent
+        </td>
+        <td
+          *ngIf="
+            transaction?.bankAccountToId === bankAccountId &&
+            transaction?.bankAccountFromId !== bankAccountId &&
+            transaction?.bankAccountFromId !== 0
+          "
+        >
+          {{ transaction?.transactionTypeName }} received
+        </td>
       </tr>
     </tbody>
   </table>
 
   <hr />
   <div *ngIf="listTransaction">
-    <h2 *ngIf="listTransaction[0].compte.solde < 0" class="alert-danger">
-      Ton solde est de :
-      {{ listTransaction[0]?.compte.solde | currency: "EUR" }}
+    <h2 *ngIf="getSolde() <= 0" class="alert-danger">
+      Le solde de ce compte est de :
+      {{ getSolde() | currency: "EUR" }}
     </h2>
-    <h2 *ngIf="listTransaction[0].compte.solde > 0" class="alert-success">
-      Ton solde est de :
-      {{ listTransaction[0]?.compte.solde | currency: "EUR" }}
+    <h2 *ngIf="getSolde() > 0" class="alert-success">
+      Le solde de ce compte est de :
+      {{ getSolde() | currency: "EUR" }}
     </h2>
   </div>
 </div>

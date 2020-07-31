@@ -26,9 +26,26 @@ export class MouvementComponent implements OnInit {
     this.transactionService
       .getTransactionByIdCompte(this.bankAccountId)
       .subscribe((compt) => {
-        this.listTransaction = JSON.parse(JSON.stringify(compt));
+        this.listTransaction = compt;
         console.log(this.listTransaction);
         this.transactionService.setTransactionByIdCompte(this.listTransaction);
       });
+  }
+
+  getSolde(): number {
+    let solde = 0;
+    for (let i = 0; i < this.listTransaction.length; i++) {
+      if (
+        this.listTransaction[i].bankAccountToId === this.bankAccountId &&
+        this.listTransaction[i].bankAccountFromId !== this.bankAccountId
+      )
+        solde += this.listTransaction[i].amount;
+      else if (
+        this.listTransaction[i].bankAccountFromId === this.bankAccountId &&
+        this.listTransaction[i].bankAccountToId !== this.bankAccountId
+      )
+        solde -= this.listTransaction[i].amount;
+    }
+    return solde;
   }
 }
