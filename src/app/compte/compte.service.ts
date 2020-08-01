@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
@@ -16,6 +16,18 @@ export class CompteService {
 
   getBankRules() {
     return this.httpCompte.get(this.apiUrl + "bankAccount/getBankRules");
+  }
+
+  getBalance(bankAccountId) {
+    const req = new HttpRequest(
+      "GET",
+      `${this.apiUrl}transaction/getBalanceForBankAccountId?bankAccountId=${bankAccountId}`,
+      {
+        responseType: "text",
+      }
+    );
+
+    return this.httpCompte.request(req);
   }
 
   getBankAccountTypes() {

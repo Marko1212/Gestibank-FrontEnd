@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { UserService } from "../user.service";
-import { User } from "../user";
+//import { UserService } from "../user.service";
+//import { User } from "../user";
 import { CompteService } from "./compte.service";
 
 @Component({
@@ -13,7 +13,8 @@ import { CompteService } from "./compte.service";
 export class CompteComponent implements OnInit {
   comptes: any;
   username: any;
-  solde: any;
+  clientId: any;
+
   constructor(
     private route: ActivatedRoute,
     private compteService: CompteService
@@ -22,12 +23,21 @@ export class CompteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.compteService.getComptesByIdClient(params.id).subscribe((compt) => {
-        this.comptes = JSON.parse(JSON.stringify(compt));
+    this.clientId = this.route.snapshot.params.id;
+    this.compteService
+      .getComptesByIdClient(this.clientId)
+      .subscribe((compt) => {
+        this.comptes = compt;
         console.log(this.comptes);
+        for (let compta of this.comptes) {
+          console.log(compta.idBankAccount);
+          this.compteService
+            .getBalance(compta.idBankAccount)
+            .subscribe((balance) => {
+              compta.balance = JSON.parse(JSON.stringify(balance)).body;
+            });
+        }
       });
-    });
   }
   getComptes(id) {
     this.compteService.getComptesByIdClient(id);
