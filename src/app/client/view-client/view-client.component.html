@@ -36,6 +36,9 @@
         Bank Rule Name : {{ client?.bankRuleName }}
       </li>
       <li class="list-group-item">
+        Date of account creation : {{ client?.creationDate | date: "longDate" }}
+      </li>
+      <li class="list-group-item">
         <a [routerLink]="['/conseiller/clients']"
           >Retour à la liste des Clients
         </a>
