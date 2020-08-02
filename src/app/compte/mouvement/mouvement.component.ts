@@ -48,4 +48,8 @@ export class MouvementComponent implements OnInit {
     }
     return solde;
   }
+
+  printPage() {
+    window.print();
+  }
 }
