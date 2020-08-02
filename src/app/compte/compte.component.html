@@ -19,7 +19,7 @@
         <td>{{ compte?.bankAccountTypeName }}</td>
         <td>{{ compte?.bankRuleName }}</td>
         <td>{{ compte?.bankAccountNumber }}</td>
-        <td>{{ compte?.balance }}</td>
+        <td>{{ compte?.balance | currency: "EUR" }}</td>
         <!-- <td>{{ compte.decouvert }}</td>
         <td>{{ compte.montantAgios }}</td>
         <td>{{ compte.seuilRemuneration }}</td>-->
@@ -49,12 +49,12 @@
     </tbody>
   </table>
 
-  <hr />
+  <!-- <hr />
 
-  <h2 *ngIf="solde < 0" class="alert-danger">
+  <h2 *ngIf="solde <= 0" class="alert-danger">
     Ton solde est de : {{ solde | currency: "EUR" }}
   </h2>
   <h2 *ngIf="solde > 0" class="alert-success">
     Ton solde est de : {{ solde | currency: "EUR" }}
-  </h2>
+  </h2> -->
 </div>

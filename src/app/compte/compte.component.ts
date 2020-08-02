@@ -14,6 +14,7 @@ export class CompteComponent implements OnInit {
   comptes: any;
   username: any;
   clientId: any;
+  solde: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,11 +36,15 @@ export class CompteComponent implements OnInit {
             .getBalance(compta.idBankAccount)
             .subscribe((balance) => {
               compta.balance = JSON.parse(JSON.stringify(balance)).body;
+              this.solde = this.convertString(compta.balance);
             });
         }
       });
   }
   getComptes(id) {
     this.compteService.getComptesByIdClient(id);
+  }
+  convertString(value) {
+    return parseFloat(value).toFixed(2);
   }
 }
