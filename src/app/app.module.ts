@@ -41,6 +41,7 @@ import { CreateClientComponent } from "./client/create-client/create-client.comp
 import { EditClientComponent } from "./client/edit-client/edit-client.component";
 import { ViewClientComponent } from "./client/view-client/view-client.component";
 import { ConverterModule } from "./currencyConverter/converter.module";
+import { NotificationComponent } from "./compte/notification/notification.component";
 //import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 @NgModule({
@@ -77,6 +78,7 @@ import { ConverterModule } from "./currencyConverter/converter.module";
     ConseillerClientComponent,
     EditClientComponent,
     ViewClientComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

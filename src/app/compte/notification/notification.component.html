@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Bienvenue à {{ username }}</h2>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Message</th>
+        <th scope="col">Date du message</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let notification of notifications">
+      <tr>
+        <td>{{ notification?.message }}</td>
+        <td>{{ notification?.time | date: "medium" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

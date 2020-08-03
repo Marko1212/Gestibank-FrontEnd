@@ -33,4 +33,10 @@ export class ClientService {
       }
     );
   }
+
+  getNotifications(idUserAccount) {
+    return this.httpClient.get(
+      this.apiUrl + "notifications/getNotifications/" + idUserAccount
+    );
+  }
 }
