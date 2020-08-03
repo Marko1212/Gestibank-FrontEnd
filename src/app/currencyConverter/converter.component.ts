@@ -8,7 +8,7 @@ import { CurrencyListService } from "./currency-list.service";
 
 @Component({
   selector: "simple-root",
-  encapsulation: ViewEncapsulation.None,
+  /* encapsulation: ViewEncapsulation.None, */
   templateUrl: "./converter.component.html",
   styleUrls: ["./converter.component.css"],
 })
