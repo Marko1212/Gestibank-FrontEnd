@@ -71,6 +71,22 @@
           >Vos Notifications</a
         >
       </li>
+      <li class="nav-item" *ngIf="login.getRole() == 'client'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          [routerLink]="['client', login.getIdUserAccount(), 'requetes']"
+          >Faire une requête à votre agent</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="login.getRole() == 'client'">
+        <a
+          class="nav-link"
+          style="cursor: pointer;"
+          [routerLink]="['client', login.getIdUserAccount(), 'changePass']"
+          >Changer votre code d'accès</a
+        >
+      </li>
       <!-- Conseiller -->
       <li class="nav-item" *ngIf="login.getRole() == 'agent'">
         <a class="nav-link" style="cursor: pointer;" routerLink="/conseiller"
@@ -82,7 +98,7 @@
           class="nav-link"
           style="cursor: pointer;"
           routerLink="/conseiller/demandesOuvertures"
-          >Demandes d'ouvertures</a
+          >Demandes d'ouvertures de comptes</a
         >
       </li>
       <li class="nav-item" *ngIf="login.getRole() == 'agent'">
@@ -98,7 +114,7 @@
           class="nav-link"
           style="cursor: pointer;"
           routerLink="/conseiller/requetes"
-          >Requêtes</a
+          >Requêtes de vos clients</a
         >
       </li>
       <!-- Administrateur-->
