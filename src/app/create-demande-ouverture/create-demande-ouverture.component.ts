@@ -49,9 +49,14 @@ export class CreateDemandeOuvertureComponent implements OnInit {
 
   ngOnInit() {}
 
-  resetUserPage(form) {
+  resetForm(form) {
     form.reset();
     this.resetFileUploader();
+  }
+
+  returnHomePage(form) {
+    let link = ["/"];
+    this.router.navigate(link);
   }
 
   createDemandeOuvertureCompte(form) {
@@ -70,8 +75,6 @@ export class CreateDemandeOuvertureComponent implements OnInit {
           window.setTimeout(() => {
             this.message = null;
             this.resetUserPage(form);
-            /* let link = ["/creerCompte"];
-          this.router.navigate(link); */
           }, 3000);
         });
     }

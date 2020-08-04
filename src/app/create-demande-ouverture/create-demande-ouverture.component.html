@@ -428,14 +428,23 @@
           type="submit"
           [disabled]="!myform.form.valid"
           class="btn btn-primary"
+          id="submitButton"
         >
           Valider
         </button>
         <button
           type="button"
           class="btn btn-warning"
-          (click)="resetUserPage(myform)"
+          (click)="resetForm(myform)"
           id="resetButton"
+        >
+          Recommencer
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="returnHomePage(myform)"
+          id="returnHomeButton"
         >
           Annuler
         </button>
