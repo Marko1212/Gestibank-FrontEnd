@@ -74,7 +74,7 @@ export class CreateDemandeOuvertureComponent implements OnInit {
           //form.reset();
           window.setTimeout(() => {
             this.message = null;
-            this.resetUserPage(form);
+            this.resetForm(form);
           }, 3000);
         });
     }
