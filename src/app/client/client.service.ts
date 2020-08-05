@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
@@ -37,6 +37,31 @@ export class ClientService {
   getNotifications(idUserAccount) {
     return this.httpClient.get(
       this.apiUrl + "notifications/getNotifications/" + idUserAccount
+    );
+  }
+
+  getRequetes() {
+    return this.httpClient.get(
+      this.apiUrl + "bankAccount/requestTitlesForClients"
+    );
+  }
+  createCustomRequestForAgent(requestToAgent: {
+    loggedInUserId: number;
+    description: string;
+    title: string;
+  }) {
+    const httpHedears = new HttpHeaders();
+    httpHedears.append("Content-Type", "application/json");
+    httpHedears.append("Accept", "*/*");
+    httpHedears.append("Accept-Encoding", "gzip, deflate");
+    httpHedears.append("Connection", "keep-alive");
+    return this.httpClient.post(
+      this.apiUrl + "bankAccount/createCustomRequestForAgent",
+      requestToAgent,
+      {
+        headers: httpHedears,
+        responseType: "text",
+      }
     );
   }
 }

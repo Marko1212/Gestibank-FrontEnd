@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Bienvenue</h2>
+  <div *ngIf="message">
+    <h2>{{ message }}</h2>
+  </div>
+  <hr />
+  <form #myform="ngForm" (ngSubmit)="submitRequestToAgent(myform)">
+    <h4>Choisir votre requête</h4>
+    <div>
+      <select
+        class="form-control"
+        [(ngModel)]="titleOfRequest"
+        (change)="onChangeTitleOfRequest($event.target.value)"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option
+          *ngFor="
+            let titleOfRequest of titlesOfRequests;
+            let titleIndex = index
+          "
+          [value]="titleIndex"
+          >{{ titleOfRequest }}</option
+        >
+      </select>
+    </div>
+    <hr />
+    <h4>Description</h4>
+    <div>
+      <textarea
+        rows="4"
+        cols="50"
+        class="form-control"
+        [(ngModel)]="descriptionOfRequest"
+        (change)="onChangeDescriptionOfRequest($event.target.value)"
+        [ngModelOptions]="{ standalone: true }"
+        required
+      >
+      </textarea>
+    </div>
+    <br />
+    <div>
+      <button type="submit" class="btn btn-primary">
+        Envoyer votre demande
+      </button>
+    </div>
+  </form>
+</div>

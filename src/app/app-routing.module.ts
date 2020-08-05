@@ -32,6 +32,7 @@ import { ConseillerClientComponent } from "./conseiller/conseiller-client/consei
 import { ViewClientComponent } from "./client/view-client/view-client.component";
 import { EditClientComponent } from "./client/edit-client/edit-client.component";
 import { NotificationComponent } from "./compte/notification/notification.component";
+import { RequeteComponent } from "./compte/requete/requete.component";
 //import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 const routes: Routes = [
@@ -114,6 +115,11 @@ const routes: Routes = [
   {
     path: "client/:id/notifications",
     component: NotificationComponent,
+    canActivate: [AuthClient],
+  },
+  {
+    path: "client/:id/requetes",
+    component: RequeteComponent,
     canActivate: [AuthClient],
   },
   {
