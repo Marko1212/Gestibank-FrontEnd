@@ -35,6 +35,7 @@ export class RequeteComponent implements OnInit {
     let requestTitle = this.titlesOfRequests[this.indexOfRequest];
     let descriptionRequest = this.descriptionOfRequest;
     console.log(clientID);
+    console.log(this.indexOfRequest);
     console.log(requestTitle);
     console.log(descriptionRequest);
     let requestToAgent = {
