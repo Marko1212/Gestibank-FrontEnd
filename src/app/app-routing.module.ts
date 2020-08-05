@@ -33,6 +33,7 @@ import { ViewClientComponent } from "./client/view-client/view-client.component"
 import { EditClientComponent } from "./client/edit-client/edit-client.component";
 import { NotificationComponent } from "./compte/notification/notification.component";
 import { RequeteComponent } from "./compte/requete/requete.component";
+import { RequeteClientComponent } from "./client/requetesClients/requeteClient.component";
 //import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 const routes: Routes = [
@@ -58,8 +59,6 @@ const routes: Routes = [
     component: DemandeOuvertureAssigneComponent,
     canActivate: [AuthConseiller],
   },
-  { path: "creerCompte", component: CreateDemandeOuvertureComponent },
-  //{ path: "creerCompte/:id/uploadFiles", component: UploadFilesComponent },
   {
     path: "conseiller",
     component: ConseillerHomeComponent,
@@ -68,6 +67,11 @@ const routes: Routes = [
   {
     path: "conseiller/clients",
     component: ListClientComponent,
+    canActivate: [AuthConseiller],
+  },
+  {
+    path: "conseiller/requetes",
+    component: RequeteClientComponent,
     canActivate: [AuthConseiller],
   },
   {
@@ -133,6 +137,8 @@ const routes: Routes = [
     component: ViewClientComponent,
     canActivate: [AuthClient],
   },
+  { path: "creerCompte", component: CreateDemandeOuvertureComponent },
+  //{ path: "creerCompte/:id/uploadFiles", component: UploadFilesComponent },
   { path: "notAuthorizedPage", component: PageNotAuthorizedComponent },
   { path: "login", component: LoginComponent },
 ];

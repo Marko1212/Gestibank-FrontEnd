@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
@@ -63,5 +63,14 @@ export class ClientService {
         responseType: "text",
       }
     );
+  }
+
+  getClientsRequests(agentId, requestTypeFlag) {
+    const req = new HttpRequest(
+      "GET",
+      `${this.apiUrl}agent/getUnresolvedRequests/${agentId}?requestTypeFlag=${requestTypeFlag}`
+    );
+
+    return this.httpClient.request(req);
   }
 }

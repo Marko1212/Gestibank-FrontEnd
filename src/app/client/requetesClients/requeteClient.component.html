@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Bienvenue à {{ username }}</h2>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID de la demande du client</th>
+        <th scope="col">Date du message</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Description</th>
+        <th scope="col">Numéro ID du client</th>
+        <th scope="col">Nom et prénom du client</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let requeteClient of requetesClients">
+      <tr>
+        <td>{{ requeteClient?.idRequest }}</td>
+        <td>{{ requeteClient?.time | date: "medium" }}</td>
+        <td>{{ requeteClient?.title }}</td>
+        <td>{{ requeteClient?.description }}</td>
+        <td>{{ requeteClient?.idClient }}</td>
+        <td>{{ requeteClient?.lastname }} {{ requeteClient?.firstname }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

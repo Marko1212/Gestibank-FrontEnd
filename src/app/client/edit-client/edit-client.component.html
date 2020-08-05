@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Bienvenue</h2>
   <div *ngIf="message">
-    {{ message }}
+    <h2>{{ message }}</h2>
   </div>
   <hr />
   <form #myform="ngForm" (ngSubmit)="updateAccount(myform)">
