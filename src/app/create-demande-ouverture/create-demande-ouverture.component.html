@@ -161,7 +161,7 @@
         >
           <label for="numberOfChildren">Number of children</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             name="numberOfChildren"
             [(ngModel)]="createCompte.numberOfChildren"
@@ -267,7 +267,7 @@
         >
           <label for="zip">Zip</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             name="zip"
             [(ngModel)]="createCompte.zip"
@@ -386,10 +386,10 @@
             *ngIf="pass?.errors && (pass.dirty || pass.touched)"
           >
             <p *ngIf="pass?.errors.required">Password is required</p>
-            <div *ngIf="pass?.errors.pattern">
-              Password must contain at least 1 lowercase letter, at least 3 or
-              more characters!
-            </div>
+            <p *ngIf="pass?.errors.pattern">
+              Password must contain at least 3 or more characters, including at
+              least 1 lowercase letter!
+            </p>
           </div>
         </div>
         <div class="form-group">

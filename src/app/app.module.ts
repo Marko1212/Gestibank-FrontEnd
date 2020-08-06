@@ -44,6 +44,8 @@ import { ConverterModule } from "./currencyConverter/converter.module";
 import { NotificationComponent } from "./compte/notification/notification.component";
 import { RequeteComponent } from "./compte/requete/requete.component";
 import { RequeteClientComponent } from "./client/requetesClients/requeteClient.component";
+import { ChangePasswordComponent } from "./client/changePassword/changePassword.component";
+import { ValidateEqualModule } from "ng-validate-equal";
 //import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 @NgModule({
@@ -83,6 +85,7 @@ import { RequeteClientComponent } from "./client/requetesClients/requeteClient.c
     NotificationComponent,
     RequeteComponent,
     RequeteClientComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,7 @@ import { RequeteClientComponent } from "./client/requetesClients/requeteClient.c
     FormsModule,
     ReactiveFormsModule,
     ConverterModule,
+    ValidateEqualModule,
   ],
   providers: [
     UserService,

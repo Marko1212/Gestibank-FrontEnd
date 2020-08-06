@@ -34,6 +34,7 @@ import { EditClientComponent } from "./client/edit-client/edit-client.component"
 import { NotificationComponent } from "./compte/notification/notification.component";
 import { RequeteComponent } from "./compte/requete/requete.component";
 import { RequeteClientComponent } from "./client/requetesClients/requeteClient.component";
+import { ChangePasswordComponent } from "./client/changePassword/changePassword.component";
 //import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 const routes: Routes = [
@@ -127,11 +128,15 @@ const routes: Routes = [
     canActivate: [AuthClient],
   },
   {
+    path: "client/:id/changePass",
+    component: ChangePasswordComponent,
+    canActivate: [AuthClient],
+  },
+  {
     path: "client/:id/conseiller",
     component: ConseillerClientComponent,
     canActivate: [AuthClient],
   },
-
   {
     path: "client/conseiller/:id/view",
     component: ViewClientComponent,

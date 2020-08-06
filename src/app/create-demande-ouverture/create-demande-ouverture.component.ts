@@ -54,7 +54,7 @@ export class CreateDemandeOuvertureComponent implements OnInit {
     this.resetFileUploader();
   }
 
-  returnHomePage(form) {
+  returnHomePage() {
     let link = ["/"];
     this.router.navigate(link);
   }
@@ -71,10 +71,10 @@ export class CreateDemandeOuvertureComponent implements OnInit {
         .newDemandeOuvertureCompte(this.createCompte)
         .subscribe((response) => {
           this.message = "Votre demande a bien été envoyée!";
-          //form.reset();
           window.setTimeout(() => {
             this.message = null;
             this.resetForm(form);
+            this.returnHomePage();
           }, 3000);
         });
     }
