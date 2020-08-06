@@ -35,7 +35,6 @@ export class CompteService {
   }
 
   modifyBankAccount(accountUpdated, agentID) {
-    //console.log(" I AM IN MODIFY!!!");
     console.log(accountUpdated);
     console.log(agentID);
     const httpHedears = new HttpHeaders();

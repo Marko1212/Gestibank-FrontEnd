@@ -73,4 +73,18 @@ export class ClientService {
 
     return this.httpClient.request(req);
   }
+
+  changePassword(changePassword) {
+    console.log(changePassword);
+    const httpHedears = new HttpHeaders();
+    httpHedears.append("Content-Type", "application/json");
+    httpHedears.append("Accept", "*/*");
+    httpHedears.append("Accept-Encoding", "gzip, deflate");
+    httpHedears.append("Connection", "keep-alive");
+    return this.httpClient.put(
+      this.apiUrl + "userAccount/changePassword",
+      changePassword,
+      { headers: httpHedears, responseType: "text" }
+    );
+  }
 }
