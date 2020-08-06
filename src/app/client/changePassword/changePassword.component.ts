@@ -35,7 +35,10 @@ export class ChangePasswordComponent implements OnInit {
 
   modifyPassword(form) {
     console.log(this.changePassword);
-    if (this.changePassword.oldPass == this.changePassword.newPass) {
+    if (
+      this.changePassword.oldPass.toUpperCase() ===
+      this.changePassword.newPass.toUpperCase()
+    ) {
       this.messageWarning =
         "New password should be different from current password! Please try again!";
       window.setTimeout(() => {
@@ -59,7 +62,8 @@ export class ChangePasswordComponent implements OnInit {
           }, 3000);
         });
     } */
+    } else {
+      // TO FINISH!!!
     }
-    // TO FINISH!!!
   }
 }
