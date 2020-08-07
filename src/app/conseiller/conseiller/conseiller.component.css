@@ -3,3 +3,8 @@
   width: 200px;
   float: right;
 }
+
+.center {
+  text-align: center;
+  width: 100%;
+}

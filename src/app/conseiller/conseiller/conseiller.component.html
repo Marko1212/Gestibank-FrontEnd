@@ -19,7 +19,7 @@
       </button>
     </div>
   </form>
-  <table class="table table-striped">
+  <table class="table table-striped center">
     <thead>
       <tr>
         <th scope="col">Last name</th>
@@ -47,14 +47,14 @@
           <a
             class="alert alert-success"
             [routerLink]="['/admin/conseiller/view', conseiller.idUserAccount]"
-            ><i class="fa fa-eye"></i>
+            ><i class="fa fa-eye center"></i>
           </a>
         </td>
         <td>
           <a
             class="alert alert-primary"
             [routerLink]="['/admin/conseiller/edit', conseiller.idUserAccount]"
-            ><i class="fa fa-edit"></i>
+            ><i class="fa fa-edit center"></i>
           </a>
         </td>
         <td>
@@ -62,7 +62,7 @@
             class="alert alert-danger"
             style="cursor: pointer;"
             (click)="delete(conseiller)"
-            ><i class="fa fa-trash"></i>
+            ><i class="fa fa-trash center"></i>
           </a>
         </td>
       </tr>
