@@ -13,6 +13,7 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
   listClientPotentiel: any;
   client: Client;
   listOfValidatedClients: Client[] = [];
+  message: any;
   // listclientAccepte: any[] = [];
   constructor(
     private demandeService: DemandesOuverturesService,
