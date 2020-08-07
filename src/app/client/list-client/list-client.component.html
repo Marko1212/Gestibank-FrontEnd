@@ -13,7 +13,7 @@
         <th scope="col">Edit</th>
         <th scope="col">Deactivate Bank Account</th>
         <th scope="col">Create Cheque Book for Bank Account</th>
-        <th scope="col">Create Saving Account for Client</th>
+        <th scope="col">Create Saving Account for Client (max : 1)</th>
       </tr>
     </thead>
     <tbody *ngFor="let compte of clientList">
@@ -56,7 +56,7 @@
           <a
             class="alert alert-info"
             style="cursor: pointer;"
-            (click)="createChequeBookForAccount(compte)"
+            (click)="createChequeBookForBankAccount(compte)"
             ><i class="fa fa-plus center"></i>
           </a>
         </td>
@@ -64,7 +64,7 @@
           <a
             class="alert alert-dark"
             style="cursor: pointer;"
-            (click)="createSavingAccountForClient(client)"
+            (click)="createSavingAccountForClient(compte)"
             ><i class="fa fa-plus center"></i>
           </a>
         </td>
