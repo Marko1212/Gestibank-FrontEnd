@@ -2,3 +2,13 @@
   text-align: center;
   width: 100%;
 }
+
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6;
+}
+
+.active {
+  cursor: pointer;
+}
