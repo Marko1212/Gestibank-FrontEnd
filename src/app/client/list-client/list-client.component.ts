@@ -65,6 +65,6 @@ export class ListClientComponent implements OnInit {
     //kreiranja saving account racuna. Proveriti da li je klijent validan prilikom kreiranja tog racuna. Dugme treba da bude "sivo" (t.j.neaktivno) jedino ako je saving account
     //racun validan. Ukoliko agent deaktivira saving account (znaci account vise nije validan), dugme treba ponovo da postane aktivno.
     //Posle klika na dugme, klijent dobija mejl da mu je odobren rikvest i da mu je kreiran saving account racun.
-    //Saving account racun treba da se pojavi u listi racuna, sa dugmicima: Show, Deactivate i Create Cheque Book for Bank Account.
+    //Saving account racun (ako je validan!) treba da bude vidljiv u listi racuna, sa dugmicima: Show, Deactivate i Create Cheque Book for Bank Account.
   }
 }
