@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ClientService } from "../client.service";
-import { CompteService } from "../../compte/compte.service";
-import { Client } from "../create-client/client";
+/* import { CompteService } from "../../compte/compte.service";
+import { Client } from "../create-client/client"; */
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-list-client",
@@ -14,7 +15,8 @@ export class ListClientComponent implements OnInit {
   //compteList: any[] = [];
   //client: Client;
   constructor(
-    private clientService: ClientService //private compteService: CompteService
+    private clientService: ClientService,
+    private router: Router //private compteService: CompteService
   ) {
     //this.client = new Client();
   }
@@ -33,6 +35,12 @@ export class ListClientComponent implements OnInit {
       });
   }
 
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = "reload";
+    this.router.navigate(["/conseiller/clients"]);
+  }
+
   deactivate(compte) {
     let userID = localStorage.getItem("idUserAccount");
     this.clientService
@@ -42,11 +50,12 @@ export class ListClientComponent implements OnInit {
         this.message = "Le compte a bien été désactivé!";
         window.setTimeout(() => {
           this.message = null;
+          let index = this.clientList.indexOf(compte, 0);
+          if (index > -1) {
+            this.clientList.splice(index, 1);
+          }
+          this.reloadComponent();
         }, 3000);
-        let index = this.clientList.indexOf(compte, 0);
-        if (index > -1) {
-          this.clientList.splice(index, 1);
-        }
       });
   }
 

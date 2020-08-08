@@ -54,11 +54,11 @@ export class ConseillerComponent implements OnInit {
         this.message = "Le conseiller a bien été effacé";
         window.setTimeout(() => {
           this.message = null;
+          var index = this.listConseillers.indexOf(conseiller, 0);
+          if (index > -1) {
+            this.listConseillers.splice(index, 1);
+          }
         }, 3000);
-        var index = this.listConseillers.indexOf(conseiller, 0);
-        if (index > -1) {
-          this.listConseillers.splice(index, 1);
-        }
       });
   }
 }
