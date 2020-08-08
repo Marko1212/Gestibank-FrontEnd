@@ -41,6 +41,7 @@
         </td>
         <td>
           <a
+            *ngIf="compte.bankAccountTypeName === 'Current'"
             class="alert alert-primary"
             [routerLink]="['/conseiller/client/', 'edit', compte.idBankAccount]"
             ><i class="fa fa-edit center"></i>
@@ -64,6 +65,7 @@
         </td>
         <td>
           <a
+            *ngIf="compte.bankAccountTypeName === 'Current'"
             class="alert alert-dark"
             (click)="createSavingAccountForClient(compte)"
             ><i class="fa fa-plus center active"></i>
