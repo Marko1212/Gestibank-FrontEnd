@@ -63,12 +63,35 @@
             ><i class="fa fa-plus center"></i>
           </a>
         </td>
-        <td>
+        <td
+          *ngIf="
+            compte.bankAccountTypeName === 'Current' &&
+            !compte.clientSavingAccountFlag
+          "
+        >
           <a
-            *ngIf="compte.bankAccountTypeName === 'Current'"
             class="alert alert-dark"
             (click)="createSavingAccountForClient(compte)"
             ><i class="fa fa-plus center active"></i>
+          </a>
+        </td>
+        <td
+          *ngIf="
+            compte.bankAccountTypeName === 'Current' &&
+            compte.clientSavingAccountFlag
+          "
+        >
+          <a
+            class="alert alert-dark"
+            (click)="createSavingAccountForClient(compte)"
+            ><i class="fa fa-plus center disabled"></i>
+          </a>
+        </td>
+        <td *ngIf="compte.bankAccountTypeName === 'Saving'">
+          <a
+            class="alert alert-dark hidden"
+            (click)="createSavingAccountForClient(compte)"
+            ><i class="fa fa-plus center"></i>
           </a>
         </td>
       </tr>
