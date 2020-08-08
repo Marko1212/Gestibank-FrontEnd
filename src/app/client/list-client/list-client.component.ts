@@ -54,7 +54,7 @@ export class ListClientComponent implements OnInit {
           if (index > -1) {
             this.clientList.splice(index, 1);
           }
-          this.reloadComponent();
+          this.reloadComponent(); //potrebno da bi odmah posle klika na deactivate saving account ponovo "postalo" aktivno dugme za kreiranje stednog racuna
         }, 3000);
       });
   }
