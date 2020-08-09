@@ -399,6 +399,7 @@
             Carte d'identité
           </label>
           <input
+            #idCard
             type="file"
             [(ngModel)]="createCompte.idDocument"
             name="idDocument"
@@ -416,6 +417,7 @@
             Justificatif de domicile
           </label>
           <input
+            #proofResidence
             #proofHome="ngModel"
             type="file"
             name="proofHome"
@@ -432,6 +434,7 @@
             Justificatif de revenus
           </label>
           <input
+            #proofIncome
             type="file"
             #proofSalary="ngModel"
             name="proofSalary"

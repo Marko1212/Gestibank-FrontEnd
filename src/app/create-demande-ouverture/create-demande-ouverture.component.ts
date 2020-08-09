@@ -14,15 +14,15 @@ export class CreateDemandeOuvertureComponent implements OnInit {
   message: string;
   createCompte: DemandeOuvertureCompte;
 
-  /* @ViewChild("idDocumentRef", { static: false }) idDocumentRef: ElementRef;
-  @ViewChild("proofHomeRef", { static: false }) proofHomeRef: ElementRef;
-  @ViewChild("proofSalaryRef", { static: false }) proofSalaryRef: ElementRef; */
+  @ViewChild("idCard", { static: true }) idDocumentRef: ElementRef;
+  @ViewChild("proofResidence", { static: true }) proofHomeRef: ElementRef;
+  @ViewChild("proofIncome", { static: true }) proofSalaryRef: ElementRef;
 
-  /*   resetFileUploader() {
+  resetFileUploader() {
     this.idDocumentRef.nativeElement.value = null;
     this.proofHomeRef.nativeElement.value = null;
     this.proofSalaryRef.nativeElement.value = null;
-  } */
+  }
   constructor(
     private demandeOuvertureCompteService: DemandeOuvertureCompteService,
     private router: Router
@@ -54,11 +54,10 @@ export class CreateDemandeOuvertureComponent implements OnInit {
 
   resetForm(form) {
     form.reset();
-    //this.resetFileUploader();
+    this.resetFileUploader();
   }
 
   returnHomePage(form) {
-    form.reset();
     let link = ["/"];
     this.router.navigate(link);
   }
