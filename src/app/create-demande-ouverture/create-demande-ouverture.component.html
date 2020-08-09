@@ -397,12 +397,17 @@
             Carte d'identité
           </label>
           <input
-            #idDocumentRef
             type="file"
+            [ngModel]="createCompte.idDocument"
             name="idDocument"
-            (change)="createCompte.idDocument = idDocumentRef.files"
+            #idDocument="ngModel"
+            (change)="createCompte.idDocument = idDocument.files"
             class="form-control"
+            requireFile
           />
+          <p *ngIf="!idDocument.valid" style="color: red;">
+            This field is required!
+          </p>
         </div>
 
         <div class="form-group">
@@ -410,28 +415,38 @@
             Justificatif de domicile
           </label>
           <input
-            #proofHomeRef
+            #proofHome="ngModel"
             type="file"
             name="proofHome"
-            (change)="createCompte.proofHome = proofHomeRef.files"
+            [ngModel]="createCompte.proofHome"
+            (change)="createCompte.proofHome = proofHome.files"
             class="form-control"
+            requireFile
           />
+          <p *ngIf="!proofHome.valid" style="color: red;">
+            This field is required!
+          </p>
         </div>
         <div class="form-group">
           <label for="proofSalary">
             Justificatif de revenus
           </label>
           <input
-            #proofSalaryRef
+            #proofSalary="ngModel"
             type="file"
             name="proofSalary"
-            (change)="createCompte.proofSalary = proofSalaryRef.files"
+            [ngModel]="createCompte.proofSalary"
+            (change)="createCompte.proofSalary = proofSalary.files"
             class="form-control"
+            requireFile
           />
+          <p *ngIf="!proofSalary.valid" style="color: red;">
+            This field is required!
+          </p>
         </div>
         <button
           type="submit"
-          [disabled]="!myform.form.valid"
+          [disabled]="!myform.valid"
           class="btn btn-primary"
           id="submitButton"
         >
