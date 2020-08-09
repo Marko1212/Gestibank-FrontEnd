@@ -325,7 +325,6 @@
             class="form-control"
             name="additionalInfoAddress"
             [(ngModel)]="createCompte.additionalInfoAddress"
-            required
             #additionalInfoAddress="ngModel"
           />
 
@@ -336,9 +335,9 @@
               (additionalInfoAddress.dirty || additionalInfoAddress.touched)
             "
           >
-            <p *ngIf="additionalInfoAddress?.errors.required">
+            <!-- <p *ngIf="additionalInfoAddress?.errors.required">
               Additional info about address is required
-            </p>
+            </p> -->
           </div>
         </div>
         <div
@@ -392,16 +391,18 @@
             </p>
           </div>
         </div>
+        <div style="color: red;">
+          <h5>You must submit 3 DIFFERENT documents!</h5>
+        </div>
         <div class="form-group">
           <label for="idDocument">
             Carte d'identité
           </label>
           <input
             type="file"
-            [ngModel]="createCompte.idDocument"
+            [(ngModel)]="createCompte.idDocument"
             name="idDocument"
             #idDocument="ngModel"
-            (change)="createCompte.idDocument = idDocument.files"
             class="form-control"
             requireFile
           />
@@ -418,8 +419,7 @@
             #proofHome="ngModel"
             type="file"
             name="proofHome"
-            [ngModel]="createCompte.proofHome"
-            (change)="createCompte.proofHome = proofHome.files"
+            [(ngModel)]="createCompte.proofHome"
             class="form-control"
             requireFile
           />
@@ -432,11 +432,10 @@
             Justificatif de revenus
           </label>
           <input
-            #proofSalary="ngModel"
             type="file"
+            #proofSalary="ngModel"
             name="proofSalary"
-            [ngModel]="createCompte.proofSalary"
-            (change)="createCompte.proofSalary = proofSalary.files"
+            [(ngModel)]="createCompte.proofSalary"
             class="form-control"
             requireFile
           />

@@ -32,6 +32,10 @@ export class DemandeOuvertureCompteService {
     formData.append("proofSalary", proofSalary);
     formData.append("demande", JSON.stringify(demande));
 
+    console.log("####################");
+
+    console.log("formDATA", formData);
+
     const req = new HttpRequest(
       "POST",
       `${this.apiUrl}userAccount/createClient`,

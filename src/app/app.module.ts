@@ -47,6 +47,7 @@ import { RequeteClientComponent } from "./client/requetesClients/requeteClient.c
 import { ChangePasswordComponent } from "./client/changePassword/changePassword.component";
 import { ValidateEqualModule } from "ng-validate-equal";
 import { FileValidator } from "./create-demande-ouverture/file-input.validator";
+import { FileValueAccessor } from "./create-demande-ouverture/file-control-value.accessor";
 //import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 @NgModule({
@@ -88,6 +89,7 @@ import { FileValidator } from "./create-demande-ouverture/file-input.validator";
     RequeteClientComponent,
     ChangePasswordComponent,
     FileValidator,
+    FileValueAccessor,
   ],
   imports: [
     BrowserModule,

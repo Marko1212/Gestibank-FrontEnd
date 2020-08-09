@@ -3,6 +3,7 @@ import { DemandeOuvertureCompte } from "./demande-ouverture-compte";
 import { DemandeOuvertureCompteService } from "./demande-ouverture-compte.service";
 import { Router } from "@angular/router";
 import { FileValidator } from "./file-input.validator";
+import { FileValueAccessor } from "./file-control-value.accessor";
 
 @Component({
   selector: "app-create-demande-ouverture",
@@ -13,7 +14,7 @@ export class CreateDemandeOuvertureComponent implements OnInit {
   message: string;
   createCompte: DemandeOuvertureCompte;
 
-  /*   @ViewChild("idDocumentRef", { static: false }) idDocumentRef: ElementRef;
+  /* @ViewChild("idDocumentRef", { static: false }) idDocumentRef: ElementRef;
   @ViewChild("proofHomeRef", { static: false }) proofHomeRef: ElementRef;
   @ViewChild("proofSalaryRef", { static: false }) proofSalaryRef: ElementRef; */
 
@@ -63,7 +64,8 @@ export class CreateDemandeOuvertureComponent implements OnInit {
   }
 
   createDemandeOuvertureCompte(form) {
-    console.log(this.createCompte);
+    //console.log(this.createCompte.homeNumber);
+    //console.log("ID DOCUMENT FILE", this.createCompte.idDocument);
     // upload of 3 files is mandatory to submit form!
     /*     if (
       this.idDocumentRef.nativeElement.value &&
@@ -75,7 +77,7 @@ export class CreateDemandeOuvertureComponent implements OnInit {
       .subscribe((response) => {
         this.message = "Votre demande a bien été envoyée!";
         window.setTimeout(() => {
-          this.message = null;
+          this.message = "";
           this.returnHomePage(form);
         }, 3000);
       });
