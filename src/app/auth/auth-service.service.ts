@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 export class AuthServiceService {
   //roleName: string;
   //user: any;
-
+  isLoggedIn: boolean = false;
   constructor(private loginService: LoginService, private route: Router) {}
 
   login(userReturn) {
@@ -25,18 +25,22 @@ export class AuthServiceService {
       switch (userReturn.roleName) {
         case "admin":
           //this.roleName = "admin";
+          this.isLoggedIn = true;
           this.route.navigateByUrl("/admin");
           break;
         case "agent":
           //this.roleName = "agent";
+          this.isLoggedIn = true;
           this.route.navigateByUrl("/conseiller");
           break;
         case "client":
           //this.roleName = "client";
+          this.isLoggedIn = true;
           this.route.navigateByUrl("/client");
           break;
         default:
           this.route.navigateByUrl("/login");
+          break;
       }
     });
   }

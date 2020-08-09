@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-.not-active {
+.disabled {
   pointer-events: none;
   cursor: default;
   opacity: 0.6;
