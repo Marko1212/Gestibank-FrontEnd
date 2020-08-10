@@ -34,8 +34,9 @@
             [(ngModel)]="client.valid"
             [ngModelOptions]="{ standalone: true }"
           >
-            <option [ngValue]="true">Valid</option>
-            <option [ngValue]="false">Invalid</option>
+            <!--    <option [ngValue]="default">Process later</option> -->
+            <option [ngValue]="true">Accept</option>
+            <option [ngValue]="false">Reject</option>
           </select>
         </tr>
       </tbody>

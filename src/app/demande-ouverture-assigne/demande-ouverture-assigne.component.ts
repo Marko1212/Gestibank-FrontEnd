@@ -27,7 +27,7 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
       .getDemandeOuvertureConseiller(conseillerId)
       .subscribe((result) => {
         this.listClientPotentiel = result;
-        console.log(result);
+        console.log(this.listClientPotentiel);
       });
   }
   reloadComponent() {
@@ -39,6 +39,7 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
   accept(form) {
     console.log(this.listClientPotentiel);
     for (this.client of this.listClientPotentiel) {
+      console.log(this.client.valid);
       if (this.client.valid) {
         //debugger;
         var tmpCli = new Client(
