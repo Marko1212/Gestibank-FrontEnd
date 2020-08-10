@@ -14,6 +14,8 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
   client: Client;
   listOfCheckedClients: Client[] = [];
   message: any;
+  clientPot: any;
+  actions: any = ["processLater", "accept", "reject"];
   // listclientAccepte: any[] = [];
   constructor(
     private demandeService: DemandesOuverturesService,
@@ -27,6 +29,9 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
       .getDemandeOuvertureConseiller(conseillerId)
       .subscribe((result) => {
         this.listClientPotentiel = result;
+        for (this.clientPot of this.listClientPotentiel) {
+          this.clientPot.action = "";
+        }
         console.log(this.listClientPotentiel);
       });
   }
@@ -36,28 +41,37 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
     this.router.navigate(["/conseiller/demandesOuvertures"]);
   }
 
-  accept(form) {
+  process(form) {
     console.log(this.listClientPotentiel);
-    for (this.client of this.listClientPotentiel) {
-      console.log(this.client.valid);
-      if (this.client.valid) {
-        //debugger;
-        var tmpCli = new Client(
-          this.client.idClient,
-          this.client.idRequest,
-          this.client.valid,
+    for (let checkedPerson of this.listClientPotentiel) {
+      if (checkedPerson.action === "accept") {
+        checkedPerson.valid = true;
+        let tmpCli = new Client(
+          checkedPerson.idClient,
+          checkedPerson.idRequest,
+          checkedPerson.valid,
+          parseInt(localStorage.getItem("idUserAccount"))
+        );
+        this.listOfCheckedClients.push(tmpCli);
+      }
+      if (checkedPerson.action === "reject") {
+        checkedPerson.valid = false;
+        let tmpCli = new Client(
+          checkedPerson.idClient,
+          checkedPerson.idRequest,
+          checkedPerson.valid,
           parseInt(localStorage.getItem("idUserAccount"))
         );
         this.listOfCheckedClients.push(tmpCli);
       }
     }
     console.log("list -> ", this.listOfCheckedClients);
-    this.demandeService
-      .assigne(this.listOfCheckedClients)
+    /* this.demandeService
+      .process(this.listOfCheckedClients)
       .subscribe((result) => {
         console.log(result);
         this.reloadComponent();
         //form.reset();
-      });
+      }); */
   }
 }

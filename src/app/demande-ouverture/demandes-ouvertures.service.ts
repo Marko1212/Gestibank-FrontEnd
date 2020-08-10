@@ -34,7 +34,7 @@ export class DemandesOuverturesService {
     );
   }
 
-  assigne(list) {
+  process(list) {
     const httpHedears = new HttpHeaders();
     httpHedears.append("Content-Type", "application/json");
     httpHedears.append("Accept", "*/*");

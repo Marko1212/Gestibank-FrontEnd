@@ -3,7 +3,7 @@
   <div *ngIf="message">
     {{ message }}
   </div>
-  <form #myform="ngForm" (ngSubmit)="accept(myform)">
+  <form #myform="ngForm" (ngSubmit)="process(myform)">
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -14,7 +14,7 @@
           <th scope="col">Identity document</th>
           <th scope="col">Residence document</th>
           <th scope="col">Salary document</th>
-          <th scope="col">Choose</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody *ngFor="let client of listClientPotentiel">
@@ -31,12 +31,13 @@
           </td> -->
           <select
             class="form-control"
-            [(ngModel)]="client.valid"
+            [ngModel]="client?.action"
             [ngModelOptions]="{ standalone: true }"
+            (change)="client.action = $event.target.value"
           >
-            <!--    <option [ngValue]="default">Process later</option> -->
-            <option [ngValue]="true">Accept</option>
-            <option [ngValue]="false">Reject</option>
+            <option [value]="actions[0]">Process later</option>
+            <option [value]="actions[1]">Accept</option>
+            <option [value]="actions[2]">Reject</option>
           </select>
         </tr>
       </tbody>
