@@ -12,7 +12,7 @@ import { Router } from "@angular/router";
 export class DemandeOuvertureAssigneComponent implements OnInit {
   listClientPotentiel: any;
   client: Client;
-  listOfValidatedClients: Client[] = [];
+  listOfCheckedClients: Client[] = [];
   message: any;
   // listclientAccepte: any[] = [];
   constructor(
@@ -35,6 +35,7 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
     this.router.onSameUrlNavigation = "reload";
     this.router.navigate(["/conseiller/demandesOuvertures"]);
   }
+
   accept(form) {
     console.log(this.listClientPotentiel);
     for (this.client of this.listClientPotentiel) {
@@ -44,14 +45,14 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
           this.client.idClient,
           this.client.idRequest,
           this.client.valid,
-          localStorage.getItem("idUserAccount")
+          parseInt(localStorage.getItem("idUserAccount"))
         );
-        this.listOfValidatedClients.push(tmpCli);
+        this.listOfCheckedClients.push(tmpCli);
       }
     }
-    console.log("list -> " + this.listOfValidatedClients);
+    console.log("list -> ", this.listOfCheckedClients);
     this.demandeService
-      .assigne(this.listOfValidatedClients)
+      .assigne(this.listOfCheckedClients)
       .subscribe((result) => {
         console.log(result);
         this.reloadComponent();

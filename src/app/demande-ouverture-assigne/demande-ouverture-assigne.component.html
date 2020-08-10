@@ -14,7 +14,7 @@
           <th scope="col">Identity document</th>
           <th scope="col">Residence document</th>
           <th scope="col">Salary document</th>
-          <th scope="col">Valid</th>
+          <th scope="col">Choose</th>
         </tr>
       </thead>
       <tbody *ngFor="let client of listClientPotentiel">
@@ -26,9 +26,17 @@
           <td><a href="{{ client.files[0]?.url }}">Identity</a></td>
           <td><a href="{{ client.files[1]?.url }}">Residence</a></td>
           <td><a href="{{ client.files[2]?.url }}">Salary</a></td>
-          <td>
+          <!--           <td>
             <input type="checkbox" [(ngModel)]="client.valid" name="client" />
-          </td>
+          </td> -->
+          <select
+            class="form-control"
+            [(ngModel)]="client.valid"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <option [ngValue]="true">Valid</option>
+            <option [ngValue]="false">Invalid</option>
+          </select>
         </tr>
       </tbody>
     </table>
@@ -36,7 +44,7 @@
     <br />
 
     <div>
-      <button type="submit" class="btn btn-primary">Validate</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
 </div>
