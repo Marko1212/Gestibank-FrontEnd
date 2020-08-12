@@ -12,6 +12,7 @@ import { LoginService } from "./../../login/login.service";
 export class MouvementComponent implements OnInit {
   listTransaction: any;
   bankAccountId: number;
+  filteredListTransactionPerDate: any;
 
   constructor(
     private login: LoginService,
@@ -28,7 +29,8 @@ export class MouvementComponent implements OnInit {
       .subscribe((compt) => {
         this.listTransaction = compt;
         console.log(this.listTransaction);
-        this.transactionService.setTransactionByIdCompte(this.listTransaction);
+        this.filterListTransactionPerDate();
+        console.log(this.filteredListTransactionPerDate);
       });
   }
 
@@ -47,6 +49,15 @@ export class MouvementComponent implements OnInit {
         solde -= this.listTransaction[i].amount;
     }
     return solde;
+  }
+
+  filterListTransactionPerDate() {
+    this.filteredListTransactionPerDate = this.listTransaction.filter(
+      (transaction) =>
+        (Date.now() - new Date(transaction.time).getTime()) /
+          (1000 * 3600 * 24) <=
+        30
+    );
   }
 
   printPage() {

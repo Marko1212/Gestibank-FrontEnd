@@ -18,7 +18,7 @@ export class MouvementService {
       this.apiUrl + "transaction/getTransactions/" + bankAccountId
     );
   }
-  setTransactionByIdCompte(transaction) {
+  /*   setTransactionByIdCompte(transaction) {
     this.transaction = transaction;
-  }
+  } */
 }

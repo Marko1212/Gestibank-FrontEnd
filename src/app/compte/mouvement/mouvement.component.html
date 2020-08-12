@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Bienvenue à {{ login.getUsername() }}</h2>
+  <h4>Vos transactions effectuées les 30 derniers jours</h4>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -10,7 +11,8 @@
         <th scope="col">Type Transaction</th>
       </tr>
     </thead>
-    <tbody *ngFor="let transaction of listTransaction">
+    <!--   <ng-container *ngIf="filteredListTransactionPerDate"> -->
+    <tbody *ngFor="let transaction of filteredListTransactionPerDate">
       <tr>
         <td>{{ transaction?.idTransaction }}</td>
         <td>{{ transaction?.time | date: "longDate" }}</td>
@@ -75,6 +77,7 @@
         </td>
       </tr>
     </tbody>
+    <!--   </ng-container> -->
   </table>
 
   <hr />
