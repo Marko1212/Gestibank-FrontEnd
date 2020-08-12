@@ -66,12 +66,12 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
       }
     }
     console.log("list -> ", this.listOfCheckedClients);
-    /* this.demandeService
+    this.demandeService
       .process(this.listOfCheckedClients)
       .subscribe((result) => {
         console.log(result);
         this.reloadComponent();
         //form.reset();
-      }); */
+      });
   }
 }
