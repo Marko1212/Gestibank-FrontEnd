@@ -59,13 +59,23 @@ export class ListClientComponent implements OnInit {
       });
   }
 
+  //Cekovna knjiza se kreira za odredjeni racun, current ili saving, i nema ogranicenja u broju tih knjizica.
+  //Posle klika na dugme, klijent dobija mejl da mu je odobren rikvest za cekovnu knjizicu za racun sa brojem tim i tim i da ce mu
+  //ista biti poslata postom na kucnu adresu.
+  //Proveriti da li je bank Account valid prilikom kreiranja cekovne knjizice za racun.
+  //Dugme za kreiranje cekovne knjizice treba da postoji za sve tipove racuna, i current i saving.
   createChequeBookForBankAccount(compte) {
-    //TODO
-    //Cekovna knjiza se kreira za odredjeni racun, current ili saving, i nema ogranicenja u broju tih knjizica.
-    //Posle klika na dugme, klijent dobija mejl da mu je odobren rikvest za cekovnu knjizicu i da ce mu
-    //ista biti poslata postom na kucnu adresu.
-    //Proveriti da li je bank Account valid prilikom kreiranja cekovne knjizice za racun.
-    //To dugme treba da postoji u svakom redu, ukljucujuci i saving account.
+    let userID = localStorage.getItem("idUserAccount");
+    this.clientService
+      .createChequeBookForBankAccount(compte.idBankAccount, userID)
+      .subscribe((response) => {
+        console.log(response);
+        this.message = JSON.parse(JSON.stringify(response)).message;
+        window.setTimeout(() => {
+          this.message = null;
+          // this.reloadComponent();
+        }, 3000);
+      });
   }
 
   createSavingAccountForClient(compte) {

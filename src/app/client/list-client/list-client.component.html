@@ -41,7 +41,7 @@
         </td>
         <td>
           <a
-            *ngIf="compte.bankAccountTypeName === 'Current'"
+            *ngIf="compte.bankAccountTypeName !== 'Saving'"
             class="alert alert-primary"
             [routerLink]="['/conseiller/client/', 'edit', compte.idBankAccount]"
             ><i class="fa fa-edit center"></i>
@@ -65,7 +65,7 @@
         </td>
         <td
           *ngIf="
-            compte.bankAccountTypeName === 'Current' &&
+            compte.bankAccountTypeName !== 'Saving' &&
             !compte.clientSavingAccountFlag
           "
         >
@@ -77,7 +77,7 @@
         </td>
         <td
           *ngIf="
-            compte.bankAccountTypeName === 'Current' &&
+            compte.bankAccountTypeName !== 'Saving' &&
             compte.clientSavingAccountFlag
           "
         >

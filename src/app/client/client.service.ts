@@ -34,6 +34,16 @@ export class ClientService {
     );
   }
 
+  createChequeBookForBankAccount(idBankAccount: any, userID: string) {
+    return this.httpClient.get(
+      this.apiUrl +
+        "bankAccount/createChequeBookForBankAccount/" +
+        idBankAccount +
+        "/" +
+        userID
+    );
+  }
+
   getNotifications(idUserAccount) {
     return this.httpClient.get(
       this.apiUrl + "notifications/getNotifications/" + idUserAccount
