@@ -75,6 +75,24 @@ export class ClientService {
     );
   }
 
+  createSavingAccountForClient(requestForCreationOfSavingAccount: {
+    loggedInAgentId: number;
+    clientId: any;
+  }) {
+    const httpHedears = new HttpHeaders();
+    httpHedears.append("Content-Type", "application/json");
+    httpHedears.append("Accept", "*/*");
+    httpHedears.append("Accept-Encoding", "gzip, deflate");
+    httpHedears.append("Connection", "keep-alive");
+    return this.httpClient.post(
+      this.apiUrl + "bankAccount/createSavingAccountForClient",
+      requestForCreationOfSavingAccount,
+      {
+        headers: httpHedears,
+      }
+    );
+  }
+
   getClientsRequests(agentId, requestTypeFlag) {
     const req = new HttpRequest(
       "GET",

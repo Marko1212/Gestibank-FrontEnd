@@ -68,22 +68,43 @@ export class ListClientComponent implements OnInit {
     let userID = localStorage.getItem("idUserAccount");
     this.clientService
       .createChequeBookForBankAccount(compte.idBankAccount, userID)
-      .subscribe((response) => {
+      .subscribe(async (response) => {
         console.log(response);
-        this.message = JSON.parse(JSON.stringify(response)).message;
+        this.message = await JSON.parse(JSON.stringify(response)).message;
         window.setTimeout(() => {
           this.message = null;
-          // this.reloadComponent();
+          this.reloadComponent();
         }, 3000);
       });
   }
 
+  //TODO
+  //Saving account moze da bude samo jedan za klijenta, znaci, dugme za kreiranje ce da "posivi" posle klika na dugme za
+  //kreiranje saving account racuna. Proveriti da li je klijent validan prilikom kreiranja tog racuna. Dugme treba da bude "sivo" (t.j.neaktivno) jedino ako je saving account
+  //racun validan. Ukoliko agent deaktivira saving account (znaci account vise nije validan), dugme treba ponovo da postane aktivno.
+  //Posle klika na dugme, klijent dobija mejl da mu je odobren rikvest i da mu je kreiran saving account racun.
+  //Saving account racun (ako je validan!) treba da bude vidljiv u listi racuna, sa dugmicima: Show, Deactivate i Create Cheque Book for Bank Account.
   createSavingAccountForClient(compte) {
-    //TODO
-    //Saving account moze da bude samo jedan za klijenta, znaci, dugme za kreiranje ce da "posivi" posle klika
-    //kreiranja saving account racuna. Proveriti da li je klijent validan prilikom kreiranja tog racuna. Dugme treba da bude "sivo" (t.j.neaktivno) jedino ako je saving account
-    //racun validan. Ukoliko agent deaktivira saving account (znaci account vise nije validan), dugme treba ponovo da postane aktivno.
-    //Posle klika na dugme, klijent dobija mejl da mu je odobren rikvest i da mu je kreiran saving account racun.
-    //Saving account racun (ako je validan!) treba da bude vidljiv u listi racuna, sa dugmicima: Show, Deactivate i Create Cheque Book for Bank Account.
+    let loggedInAgentId = parseInt(localStorage.getItem("idUserAccount"));
+    let clientId = compte.userAccountId;
+    //console.log(loggedInAgentId);
+    //console.log(clientId);
+
+    let requestForCreationOfSavingAccount = {
+      loggedInAgentId: loggedInAgentId,
+      clientId: clientId,
+    };
+
+    this.clientService
+      .createSavingAccountForClient(requestForCreationOfSavingAccount)
+      .subscribe((response) => {
+        console.log(response);
+        this.message = JSON.parse(JSON.stringify(response)).message;
+        console.log(this.message);
+        window.setTimeout(() => {
+          this.message = null;
+          this.reloadComponent();
+        }, 3000);
+      });
   }
 }
