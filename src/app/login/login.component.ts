@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private auth: AuthServiceService,
     private loginService: LoginService,
-    private route: Router
+    private router: Router
   ) {
     this.userLogin = new Login("", "");
   }
@@ -31,6 +31,11 @@ export class LoginComponent implements OnInit {
   logOut() {
     this.auth.logout();
     this.setMessage();
+  }
+
+  goToForgotPasswordPage() {
+    let link = ["/forgotPassword"];
+    this.router.navigate(link);
   }
   setMessage() {
     if (this.message === "You are connected.") {

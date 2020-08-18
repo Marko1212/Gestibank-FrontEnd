@@ -22,8 +22,21 @@
         [(ngModel)]="userLogin.password"
       />
     </div>
-    <button type="submit" class="btn btn-primary" (click)="login()">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="login()"
+      id="submitButton"
+    >
       Login
+    </button>
+    <button
+      type="submit"
+      class="btn btn-secondary"
+      (click)="goToForgotPasswordPage()"
+      id="goToForgotPasswordPageButton"
+    >
+      Password forgotten?
     </button>
   </form>
 </div>

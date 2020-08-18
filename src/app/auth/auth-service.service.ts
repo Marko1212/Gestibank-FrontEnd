@@ -65,7 +65,7 @@ export class AuthServiceService {
   }
 
   logout() {
-    console.log("I am in logout!");
+    //console.log("I am in logout!");
     localStorage.clear();
     localStorage.setItem("role", "user");
     //this.roleName = "user";

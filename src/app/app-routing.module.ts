@@ -35,6 +35,7 @@ import { NotificationComponent } from "./compte/notification/notification.compon
 import { RequeteComponent } from "./compte/requete/requete.component";
 import { RequeteClientComponent } from "./client/requetesClients/requeteClient.component";
 import { ChangePasswordComponent } from "./client/changePassword/changePassword.component";
+import { ForgotPasswordComponent } from "./forgotPassword/forgotPassword.component";
 //import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 const routes: Routes = [
@@ -146,6 +147,7 @@ const routes: Routes = [
   //{ path: "creerCompte/:id/uploadFiles", component: UploadFilesComponent },
   { path: "notAuthorizedPage", component: PageNotAuthorizedComponent },
   { path: "login", component: LoginComponent },
+  { path: "forgotPassword", component: ForgotPasswordComponent },
 ];
 
 @NgModule({

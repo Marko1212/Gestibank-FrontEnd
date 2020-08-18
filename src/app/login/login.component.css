@@ -1,0 +1,14 @@
+#goToForgotPasswordPageButton {
+  margin-left: 5%;
+  width: 120px;
+  height: 30px;
+  font-size: 11px;
+  padding: 0px;
+  color: yellow;
+}
+
+#submitButton {
+  width: 120px;
+  height: 30px;
+  padding: 0px;
+}

@@ -1,17 +1,25 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { User } from './user';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Login } from './login/login';
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class UserService {
- //users: User[];
+  apiUrl = "http://localhost:8080/";
 
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) {
-
+  forgotPassword(request: { email: string }) {
+    console.log(request);
+    const httpHedears = new HttpHeaders();
+    httpHedears.append("Content-Type", "application/json");
+    httpHedears.append("Accept", "*/*");
+    httpHedears.append("Accept-Encoding", "gzip, deflate");
+    httpHedears.append("Connection", "keep-alive");
+    return this.httpClient.post(
+      this.apiUrl + "userAccount/forgotPassword",
+      request,
+      { headers: httpHedears, responseType: "text" }
+    );
   }
-
 }
