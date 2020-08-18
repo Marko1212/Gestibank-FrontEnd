@@ -36,6 +36,7 @@ import { RequeteComponent } from "./compte/requete/requete.component";
 import { RequeteClientComponent } from "./client/requetesClients/requeteClient.component";
 import { ChangePasswordComponent } from "./client/changePassword/changePassword.component";
 import { ForgotPasswordComponent } from "./forgotPassword/forgotPassword.component";
+import { ResetPasswordComponent } from "./resetPassword/resetPassword.component";
 //import { UploadFilesComponent } from "./create-demande-ouverture/upload-files.component";
 
 const routes: Routes = [
@@ -148,6 +149,7 @@ const routes: Routes = [
   { path: "notAuthorizedPage", component: PageNotAuthorizedComponent },
   { path: "login", component: LoginComponent },
   { path: "forgotPassword", component: ForgotPasswordComponent },
+  { path: "resetPassword", component: ResetPasswordComponent },
 ];
 
 @NgModule({

@@ -22,4 +22,18 @@ export class UserService {
       { headers: httpHedears, responseType: "text" }
     );
   }
+
+  resetPass(resetPassword: { newPassword: any; token: any }) {
+    console.log(resetPassword);
+    const httpHedears = new HttpHeaders();
+    httpHedears.append("Content-Type", "application/json");
+    httpHedears.append("Accept", "*/*");
+    httpHedears.append("Accept-Encoding", "gzip, deflate");
+    httpHedears.append("Connection", "keep-alive");
+    return this.httpClient.post(
+      this.apiUrl + "userAccount/resetPassword",
+      resetPassword,
+      { headers: httpHedears, responseType: "text" }
+    );
+  }
 }
