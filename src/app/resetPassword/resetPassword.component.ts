@@ -31,6 +31,11 @@ export class ResetPasswordComponent implements OnInit {
     this.newPass = null;
   }
 
+  returnHomePage() {
+    let link = ["/"];
+    this.router.navigate(link);
+  }
+
   resetPass(form) {
     let resetPassword = {
       newPassword: this.newPass,
