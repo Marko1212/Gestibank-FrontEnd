@@ -76,7 +76,7 @@ export class CreateDemandeOuvertureComponent implements OnInit {
       .newDemandeOuvertureCompte(this.createCompte)
       .subscribe(
         (data) => {
-          console.log(data);
+          console.log(data); //"Success"
           this.message = "Votre demande a bien été envoyée!";
           window.setTimeout(() => {
             this.message = "";
@@ -84,7 +84,18 @@ export class CreateDemandeOuvertureComponent implements OnInit {
           }, 3000);
         },
         (error) => {
+          console.log("#############");
           console.log(error);
+          /*  HttpErrorResponse {headers: HttpHeaders, status: 400, statusText: "OK", url: "http://localhost:8080/userAccount/createClient", ok: false, …}
+error: "Your password is not valid! Valid password must have between 6 and 8 characters, must contain at least 1 uppercase letter, at least 2 digits, at least 1 special character, and should not contain username!"
+headers: HttpHeaders {normalizedNames: Map(0), lazyUpdate: null, lazyInit: ƒ}
+message: "Http failure response for http://localhost:8080/userAccount/createClient: 400 OK"
+name: "HttpErrorResponse"
+ok: false
+status: 400
+statusText: "OK"
+url: "http://localhost:8080/userAccount/createClient"
+__proto__: HttpResponseBase */
           this.messageError = error.error;
           window.setTimeout(() => {
             this.messageError = "";
