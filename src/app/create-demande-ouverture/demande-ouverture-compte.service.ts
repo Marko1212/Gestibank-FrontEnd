@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpRequest } from "@angular/common/http";
 import { DemandeOuvertureCompte } from "./demande-ouverture-compte";
 import { format } from "util";
+import { map, catchError } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -36,17 +37,27 @@ export class DemandeOuvertureCompteService {
 
     console.log("formDATA", formData);
 
-    const req = new HttpRequest(
+   /*  const req = new HttpRequest(
       "POST",
       `${this.apiUrl}userAccount/createClient`,
       formData,
       {
-        reportProgress: true,
+        //reportProgress: true,
         responseType: "text",
       }
-    );
+    ); 
+    this.httpDemandeOuvertureCompte.request(req); */
 
-    return this.httpDemandeOuvertureCompte.request(req);
+    return this.httpDemandeOuvertureCompte
+      .post<any>(`${this.apiUrl}userAccount/createClient`, formData, {
+        responseType: "text" as "json",
+      })
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+
     //const msg = { response: "Le compte a bien été créé" };
     /*const httpHedears = new HttpHeaders();
     httpHedears.append("Content-Type", "application/json");

@@ -12,6 +12,7 @@ import { FileValueAccessor } from "./file-control-value.accessor";
 })
 export class CreateDemandeOuvertureComponent implements OnInit {
   message: string;
+  messageError: string;
   createCompte: DemandeOuvertureCompte;
 
   @ViewChild("idCard", { static: true }) idDocumentRef: ElementRef;
@@ -73,13 +74,24 @@ export class CreateDemandeOuvertureComponent implements OnInit {
     ) { */
     this.demandeOuvertureCompteService
       .newDemandeOuvertureCompte(this.createCompte)
-      .subscribe((response) => {
-        this.message = "Votre demande a bien été envoyée!";
-        window.setTimeout(() => {
-          this.message = "";
-          this.returnHomePage(form);
-        }, 3000);
-      });
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.message = "Votre demande a bien été envoyée!";
+          window.setTimeout(() => {
+            this.message = "";
+            this.returnHomePage(form);
+          }, 3000);
+        },
+        (error) => {
+          console.log(error);
+          this.messageError = error.error;
+          window.setTimeout(() => {
+            this.messageError = "";
+            this.returnHomePage(form);
+          }, 3000);
+        }
+      );
   }
 }
 /* } */

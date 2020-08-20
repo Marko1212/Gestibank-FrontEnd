@@ -9,6 +9,9 @@
       <div *ngIf="message" [ngClass]="{ 'alert-success': message }">
         <h4>{{ message }}</h4>
       </div>
+      <div *ngIf="messageError" [ngClass]="{ 'alert-danger': messageError }">
+        <h4>{{ messageError }}</h4>
+      </div>
       <form #myform="ngForm" (ngSubmit)="createDemandeOuvertureCompte(myform)">
         <div
           class="form-group"
