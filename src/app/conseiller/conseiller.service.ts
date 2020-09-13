@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: "root",
 })
 export class ConseillerService {
-  apiUrl = "localhost:8080";
+  apiUrl = "http://localhost:8080/";
   //apiUrl = "http://192.168.1.80:8080/";
   constructor(private httpConseiller: HttpClient) {}
 
