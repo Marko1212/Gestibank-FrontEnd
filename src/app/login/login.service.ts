@@ -7,6 +7,22 @@ import { Subject } from "rxjs";
 })
 export class LoginService {
   apiUrl = "http://localhost:8080/";
+  //apiUrl = "http://192.168.1.80:8080/";
+
+  //da bi se 'gadjao' back end sa brauzera u mobilnom klijentu
+  //ovde je potrebano staviti : apiUrl = "http://192.168.1.80:8080/"
+  //tada ce biti moguce prikljucivati se na back end (Spring Boot aplikacija) - i sa brauzera u
+  //laptopu i sa brauzera u mobilnom telefonu.
+  //ukoliko stavim apiUrl = "http://localhost:8080/" , onda cu moci
+  //da se povezujem na back end samo sa brauzera u laptopu (ne i iz brauzera u mobilnom telefonu)
+  //192.168.1.80 ovde je IP v4 adresa kompjutera na kome ranuje back end aplikacija
+  //8080 je port na kome ranuje ta back end aplikacija
+
+  //najzad, jos jedna bitna stvar : da bi mobilni telefon mogao da se prikljuci na front end angular aplikaciju
+  //koja se izvrsava u laptopu, potrebno je na laptopu ranovati
+  //tu angular aplikaciju sa koriscenjem sledece komande: ng serve --host 0.0.0.0
+  //mobilni telefon treba da bude povezan na internet preko iste wi fi mreze kao i laptop
+
   //user: any;
   //role = new Subject<string>();
   constructor(private httpClient: HttpClient) {}
