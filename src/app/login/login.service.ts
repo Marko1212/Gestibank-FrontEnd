@@ -15,8 +15,12 @@ export class LoginService {
   //laptopu i sa brauzera u mobilnom telefonu.
   //ukoliko stavim apiUrl = "http://localhost:8080/" , onda cu moci
   //da se povezujem na back end samo sa brauzera u laptopu (ne i iz brauzera u mobilnom telefonu)
-  //192.168.1.80 ovde je IP v4 adresa kompjutera na kome ranuje back end aplikacija
+  //192.168.1.80 ovde (iznad) je IP v4 adresa kompjutera na kome ranuje back end aplikacija
   //8080 je port na kome ranuje ta back end aplikacija
+
+  //u brauzeru mobilnog telefona treba upisati url : http://192.168.1.80:4200/
+  //time se 'gadja' sa mobilnog brauzera front-end, koji se izvrsava na laptopu (IP v4 adresa laptopa je :
+  //192.168.1.80 , a port na kome radi front end aplikacija je : 4200 ). 
 
   //najzad, jos jedna bitna stvar : da bi mobilni telefon mogao da se prikljuci na front end angular aplikaciju
   //koja se izvrsava u laptopu, potrebno je na laptopu ranovati
