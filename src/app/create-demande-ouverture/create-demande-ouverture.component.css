@@ -1,13 +1,31 @@
 #resetButton {
-  margin-left: 5%;
   width: 120px;
 }
 
 #returnHomeButton {
-  margin-left: 5%;
   width: 120px;
 }
 
 #submitButton {
   width: 120px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+button {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.container {
+  margin: O auto;
+  max-width: 1000px;
+}
+
+.wrapper {
+  padding: 0 30px;
 }
