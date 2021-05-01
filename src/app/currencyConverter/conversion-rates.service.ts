@@ -11,7 +11,7 @@ import { ExchangeRateItem } from "./model/exchange-rate-item.model";
 
 @Injectable({ providedIn: "root" })
 export class ConversionRatesService {
-  private baseUrl = "https://api.exchangeratesapi.io/latest";
+  private baseUrl = "http://api.exchangeratesapi.io/v1/latest?access_key=2ea1cba03d2231a92ed748549cb55632&format=1";
   private _loading: boolean;
   private loadingStatus: Subject<boolean> = new Subject<boolean>();
 
