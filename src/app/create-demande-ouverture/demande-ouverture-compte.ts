@@ -10,7 +10,7 @@ export class DemandeOuvertureCompte {
     public firstname: string,
     public email: string,
     public marriageStatus: string,
-    public numberOfChildren: number,
+    public numberOfChildren: string,
     public homeNumber: string,
     public street: string,
     public city: string,

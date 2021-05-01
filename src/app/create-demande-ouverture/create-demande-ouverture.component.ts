@@ -34,7 +34,7 @@ export class CreateDemandeOuvertureComponent implements OnInit {
       "",
       "",
       "",
-      null,
+      "",
       "",
       "",
       "",

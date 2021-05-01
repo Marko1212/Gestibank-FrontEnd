@@ -150,6 +150,7 @@
           </p>
         </div>
       </div>
+
       <div
         class="form-group"
         [ngClass]="{
@@ -163,12 +164,11 @@
       >
         <label for="numberOfChildren">Number of children</label>
         <input
-          type="number"
+          type="text"
           class="form-control"
           name="numberOfChildren"
           [(ngModel)]="createCompte.numberOfChildren"
           #numberOfChildren="ngModel"
-          required
         />
 
         <div
@@ -178,9 +178,10 @@
             (numberOfChildren.dirty || numberOfChildren.touched)
           "
         >
+        <!--
           <p *ngIf="numberOfChildren?.errors.required">
             Number of children is required
-          </p>
+          </p> -->
         </div>
       </div>
 
