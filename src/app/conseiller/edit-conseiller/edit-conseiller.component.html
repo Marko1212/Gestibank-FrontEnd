@@ -291,7 +291,7 @@
         <p *ngIf="phone?.errors.required">Phone is required</p>
       </div>
     </div>
-    <div
+   <!--  <div
       class="form-group"
       [ngClass]="{
         'alert-danger': pass?.invalid && (pass.dirty || pass.touched),
@@ -314,7 +314,7 @@
       >
         <p *ngIf="pass?.errors.required">Password is required</p>
       </div>
-    </div>
+    </div> -->
     <button
       type="submit"
       [disabled]="!myform.form.valid"
