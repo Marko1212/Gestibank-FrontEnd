@@ -22,7 +22,7 @@
         Bank Account Type Name : {{ client?.bankAccountTypeName }}
       </li>
       <li class="list-group-item">
-        Bank Account Balance : {{ balance | currency: "EUR" }}
+        Bank Account Balance : €{{ balance }}
       </li>
       <li class="list-group-item">Client ID : {{ client?.userAccountId }}</li>
       <li class="list-group-item">Bank Rule ID : {{ client?.bankRuleId }}</li>
