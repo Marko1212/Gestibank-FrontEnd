@@ -65,7 +65,7 @@ export class DemandeOuvertureAssigneComponent implements OnInit {
         this.listOfCheckedClients.push(tmpCli);
       }
     }
-    console.log("list -> ", this.listOfCheckedClients);
+   // console.log("list -> ", this.listOfCheckedClients);
     this.demandeService
       .process(this.listOfCheckedClients)
       .subscribe((result) => {

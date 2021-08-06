@@ -43,8 +43,9 @@ export class DemandesOuverturesService {
 
     return this.httpDemandeOuverture.post(
       this.apiUrl + "agent/validation",
-      { processed: list },
+      { validated: list },
       { headers: httpHedears, responseType: "text" }
     );
+
   }
 }
