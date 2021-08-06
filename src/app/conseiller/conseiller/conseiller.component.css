@@ -4,6 +4,12 @@
   float: right;
 }
 
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 .center {
   text-align: center;
   width: 100%;

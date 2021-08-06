@@ -2,21 +2,15 @@
   <div *ngIf="message" [ngClass]="{ 'alert-success': message }">
     <h1>{{ message }}</h1>
   </div>
-  <ng-container *ngIf="loadingRouteConfig"
-    >Loading route config...</ng-container
-  >
+  <ng-container *ngIf="loadingRouteConfig">Loading route config...</ng-container>
   <form #myform="ngForm" (ngSubmit)="filterConseiller()">
-    <div id="searchForm">
-      <input
-        type="text"
-        class="form-control"
-        name="filter"
-        [(ngModel)]="filter"
-        #lastname="ngModel"
-      />
-      <button type="submit" class="btn btn-primary">
-        Filter
-      </button>
+    <div class="clearfix">
+      <div id="searchForm">
+        <input type="text" class="form-control" name="filter" [(ngModel)]="filter" #lastname="ngModel" />
+        <button type="submit" class="btn btn-primary">
+          Filter
+        </button>
+      </div>
     </div>
   </form>
   <table class="table table-striped center">
@@ -44,25 +38,18 @@
           {{ conseiller.email }}
         </td>
         <td>
-          <a
-            class="alert alert-success"
-            [routerLink]="['/admin/conseiller/view', conseiller.idUserAccount]"
-            ><i class="fa fa-eye center"></i>
+          <a class="alert alert-success" [routerLink]="['/admin/conseiller/view', conseiller.idUserAccount]"><i
+              class="fa fa-eye center"></i>
           </a>
         </td>
         <td>
-          <a
-            class="alert alert-primary"
-            [routerLink]="['/admin/conseiller/edit', conseiller.idUserAccount]"
-            ><i class="fa fa-edit center"></i>
+          <a class="alert alert-primary" [routerLink]="['/admin/conseiller/edit', conseiller.idUserAccount]"><i
+              class="fa fa-edit center"></i>
           </a>
         </td>
         <td>
-          <a
-            class="alert alert-danger"
-            style="cursor: pointer;"
-            (click)="delete(conseiller)"
-            ><i class="fa fa-trash center"></i>
+          <a class="alert alert-danger" style="cursor: pointer;" (click)="delete(conseiller)"><i
+              class="fa fa-trash center"></i>
           </a>
         </td>
       </tr>
