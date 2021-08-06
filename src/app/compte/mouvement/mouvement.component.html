@@ -84,11 +84,11 @@
   <div *ngIf="listTransaction">
     <h2 *ngIf="getSolde() <= 0" class="alert-danger">
       Le solde de ce compte est de :
-      {{ getSolde() | currency: "EUR" }}
+      €{{ getSolde() }}
     </h2>
     <h2 *ngIf="getSolde() > 0" class="alert-success">
       Le solde de ce compte est de :
-      {{ getSolde() | currency: "EUR" }}
+      €{{ getSolde() }}
     </h2>
   </div>
   <button class="submit" (click)="printPage()">Print</button>

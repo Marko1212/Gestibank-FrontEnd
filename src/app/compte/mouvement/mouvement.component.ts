@@ -34,7 +34,7 @@ export class MouvementComponent implements OnInit {
       });
   }
 
-  getSolde(): number {
+  getSolde(): string {
     let solde = 0;
     for (let i = 0; i < this.listTransaction.length; i++) {
       if (
@@ -48,7 +48,8 @@ export class MouvementComponent implements OnInit {
       )
         solde -= this.listTransaction[i].amount;
     }
-    return solde;
+    
+    return solde.toFixed(2).toString().replace(/,/g, '');
   }
 
   filterListTransactionPerDate() {

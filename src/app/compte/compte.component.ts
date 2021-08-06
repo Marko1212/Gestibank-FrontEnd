@@ -34,9 +34,8 @@ export class CompteComponent implements OnInit {
           console.log(compta.idBankAccount);
           this.compteService
             .getBalance(compta.idBankAccount)
-            .subscribe((balance) => {
-              compta.balance = JSON.parse(JSON.stringify(balance)).body;
-              // this.solde = this.convertString(compta.balance);
+            .subscribe(balance => {
+              compta.balance = JSON.parse(JSON.stringify(balance)).body;   
             });
         }
       });
