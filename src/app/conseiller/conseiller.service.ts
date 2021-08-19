@@ -54,10 +54,6 @@ export class ConseillerService {
     );
   }
 
-  //demandeOuvertureCompte(clientp: ClientPotentiel){
-  //  return this.httpClient.post<DemandeOuverture>('http://localhost:8080/client/compte/demandeOuverture',clientp);
-  //}
-
   modificationDecouvert(montant: number, id: number) {
     return this.httpConseiller.post(
       "http://localhost:8080/conseiller/compte/" +
