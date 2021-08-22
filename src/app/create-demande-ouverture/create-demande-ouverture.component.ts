@@ -76,6 +76,7 @@ export class CreateDemandeOuvertureComponent implements OnInit {
       .newDemandeOuvertureCompte(this.createCompte)
       .subscribe(
         (data) => {
+          this.messageError = "";
           console.log(data); //"Success"
           this.message = "Votre demande a bien été envoyée!";
           window.setTimeout(() => {
@@ -97,10 +98,10 @@ statusText: "OK"
 url: "http://localhost:8080/userAccount/createClient"
 __proto__: HttpResponseBase */
           this.messageError = error.error;
-          window.setTimeout(() => {
-            this.messageError = "";
-            this.returnHomePage(form);
-          }, 3000);
+     //     window.setTimeout(() => {
+      //      this.messageError = "";
+       //     this.returnHomePage(form);
+        //  }, 3000);
         }
       );
   }
