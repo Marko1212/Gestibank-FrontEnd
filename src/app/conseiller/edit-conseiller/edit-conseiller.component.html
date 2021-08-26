@@ -251,7 +251,6 @@
         name="additionalInfoAddress"
         [ngModel]="conseiller?.additionalInfoAddress"
         (ngModelChange)="conseiller.additionalInfoAddress = $event"
-        required
         #additionalInfoAddress="ngModel"
       />
 
@@ -262,9 +261,9 @@
           (additionalInfoAddress.dirty || additionalInfoAddress.touched)
         "
       >
-        <p *ngIf="additionalInfoAddress?.errors.required">
+        <!-- <p *ngIf="additionalInfoAddress?.errors.required">
           Additional info about address is required
-        </p>
+        </p> -->
       </div>
     </div>
     <div
